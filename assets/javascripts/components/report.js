@@ -5,8 +5,6 @@ var React      = require("react"),
     _          = require("lodash"),
     DOMToImage = require("dom-to-image");
 
-var DATA = require("../utils/data").DATA;
-
 var COLORS = require("../utils/data").COLORS;
 var wrappedColors = _(COLORS);
 
@@ -155,17 +153,18 @@ var Report = React.createClass({
     return {
       xAxisLabel : _.get(budget, "name", ""),
       yAxisLabel : _.get(budget, "indicators.unit", ""),
+      y0         : 100000,
       data       : data,
       chartSeries: chartSeries
     };
   },
 
   getBudgets: function (selectedStates, selectedIndicator) {
-    var DATA = JSON.parse(JSON.stringify(require("../utils/data").DATA));
+    var tempDATA = JSON.parse(JSON.stringify(require("../utils/data").DATA));
     if (_.isEmpty(selectedStates) || _.isEmpty(selectedIndicator)) {
       return [];
     }
-    return _.chain(DATA)
+    return _.chain(tempDATA)
       .filter(function (state) {
         return _.includes(_.map(selectedStates, function (item) {
           return item.slug;

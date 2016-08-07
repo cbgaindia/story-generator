@@ -19,3 +19,4 @@ bat/
 org.datakind.cbga/
 web_app/
 .node-version
+.DS_Store

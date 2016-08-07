@@ -47,5 +47,6 @@
 - [Ranjeet Singh](https://github.com/raeoks)
 - [Suchismita Naik](https://github.com/SuchismitaNaik)
 - [Teja Srivastav](https://github.com/tejasrivastav)
+- [Chetana Amancharla](https://github.com/archetana)
 
 _PS: We always try hard to improve this documentation. If you have any suggestions or contributions, please let us know._  
