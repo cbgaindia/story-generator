@@ -1,3 +1,5 @@
+"use strict";
+
 var React      = require("react"),
     DOMToImage = require("dom-to-image");
 
@@ -11,11 +13,11 @@ var ReportFooter = React.createClass({
       var url = URL.createObjectURL(blob);
 
       // Test for download link support
-      if( "download" in document.createElement('a') ){
+      if( "download" in document.createElement("a") ){
 
-        var a = document.createElement('a');
-        a.setAttribute('href', url);
-        a.setAttribute('download', name);
+        var a = document.createElement("a");
+        a.setAttribute("href", url);
+        a.setAttribute("download", name);
 
         // Create Click event
         var clickEvent = document.createEvent ("MouseEvent");
@@ -30,12 +32,12 @@ var ReportFooter = React.createClass({
       }
       else{
         // fallover, open resource in new tab.
-        window.open(url, '_blank', '');
+        window.open(url, "_blank", "");
       }
     };
     DOMToImage.toBlob(report)
     .then(function (blob) {
-        saveReport(blob, 'report.png');
+        saveReport(blob, "report.png");
     });
   },
 

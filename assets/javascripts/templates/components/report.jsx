@@ -7,7 +7,6 @@ var React    = require("react"),
 
 var Visualization = require("../../components/visualization");
 var MapLeaflet = require("../../components/map");
-var ReportFooter = require("../../components/report_footer");
 
 var Template = function (self) {
   
@@ -41,8 +40,22 @@ var Template = function (self) {
         <div className="mk-viz">
             <MapLeaflet indicator={self.state.selectedIndicator}/>
         </div>
-        
-        <ReportFooter />
+        <div className="content-footer">
+          <div className="information hr">
+            <div className="information-title">Description</div>
+            <div className="information-content">
+              Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem
+              pretium metus, quis mollis
+            </div>
+          </div>
+          <div className="information">
+            <div className="information-title">Notes</div>
+            <div className="information-content">
+              Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem
+              pretium metus, quis mollis
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -66,7 +79,22 @@ var Template = function (self) {
       <div className="mk-viz">
         <Visualization config={self.state.config} />
       </div>
-      <ReportFooter />
+      <div className="content-footer">
+          <div className="information hr">
+            <div className="information-title">Description</div>
+            <div className="information-content">
+              Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem
+              pretium metus, quis mollis
+            </div>
+          </div>
+          <div className="information">
+            <div className="information-title">Notes</div>
+            <div className="information-content">
+              Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem
+              pretium metus, quis mollis
+            </div>
+          </div>
+        </div>
     </div>
   );
 };

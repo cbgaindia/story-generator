@@ -23,19 +23,7 @@ var Template = function(self){
   return (
     <div>
       <div className="report-footer">
-        <div className="report-footer-left">
-          <div className="report-footer-item">
-            <span className="text-italic">source: </span>
-            <a href="javascript: void(0);">link</a>
-          </div>
-        </div>
         <div className="report-footer-right">
-          <div className="report-footer-item" onClick={(event) => self.onDownload()}>
-            <button type="button" className="btn btn-default">Download</button>&nbsp;|&nbsp;
-          </div>
-          <div className="report-footer-item" data-toggle="modal" data-target="#embed">
-            <button type="button" className="btn btn-default">Embed</button>&nbsp;|&nbsp;
-          </div>
           <div className="report-footer-item">
             <div className="btn-group">
               <button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -71,6 +59,12 @@ var Template = function(self){
                 </li>
               </ul>
             </div>
+          </div>
+          <div className="report-footer-item" onClick={(event) => self.onDownload()}>
+            <button type="button" className="btn btn-default">Download</button>;
+          </div>
+          <div className="report-footer-item" data-toggle="modal" data-target="#embed">
+            <button type="button" className="btn btn-default">Embed</button>;
           </div>
         </div>
       </div>

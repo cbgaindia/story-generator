@@ -5,16 +5,16 @@ var React    = require("react"),
 
 var IndicatorsSelector = require("../../components/indicators_selector"),
     StatesSelector     = require("../../components/states_selector"),
-    Report             = require("../../components/report");
+    Report             = require("../../components/report"),
+    ReportFooter = require("../../components/report_footer");
 
 var SideNavigationTemplate = function (self) {
   if (self.state.showSideNavigation) {
     return (
-      <div className="bg-primary side-nav">
+      <div className="side-nav">
         <div className="project-info">
           <div className="project-title">
             <div>CBGA Story Generator</div>
-            <div className="glyphicon glyphicon-remove" onClick={(event) => self.toggleSideNavigation()}></div>
           </div>
           <div className="project-description">
             Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem
@@ -65,24 +65,13 @@ var Template = function (self) {
                   selectedStates={self.state.selectedStates} />
 
           <div className="report-meta">
-            <StatesSelector location={self.props.location}
+            <div>
+              <StatesSelector location={self.props.location}
                             params={self.props.params}
                             states={self.state.states} />
-          </div>
-        </div>
-        <div className="content-footer">
-          <div className="information hr">
-            <div className="information-title">Description</div>
-            <div className="information-content">
-              Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem
-              pretium metus, quis mollis
             </div>
-          </div>
-          <div className="information">
-            <div className="information-title">Notes</div>
-            <div className="information-content">
-              Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem
-              pretium metus, quis mollis
+            <div>
+              <ReportFooter />
             </div>
           </div>
         </div>

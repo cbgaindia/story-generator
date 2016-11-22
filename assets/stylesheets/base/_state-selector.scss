@@ -9,8 +9,8 @@
   height: 100%;
   .states-header {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: space-between;
     height: 30%;
     .states-header-title {

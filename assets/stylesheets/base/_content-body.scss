@@ -44,23 +44,6 @@
     flex: 1;
     display: flex;
   }
-  .report-footer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: .5em;
-    .report-footer-right {
-      display: flex;
-      .report-footer-item {
-        cursor: pointer;
-        .report-footer-item-share {
-          min-width: auto;
-          padding: .3em;
-        }
-      }
-    }
-  }
   .report-message {
     flex: 1;
     justify-content: center;
@@ -71,6 +54,25 @@
   }
 }
 
+.report-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: .5em;
+  .report-footer-right {
+    display: flex;
+    flex-direction: column;
+    .report-footer-item {
+      cursor: pointer;
+      width: 100%;
+      .report-footer-item-share {
+        min-width: auto;
+        padding: .3em;
+      }
+    }
+  }
+}
 .graph {
   width: 100%;
 }
