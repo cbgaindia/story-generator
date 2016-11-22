@@ -25,7 +25,7 @@ var Template = function(self){
       <div className="report-footer">
         <div className="report-footer-right">
           <div className="report-footer-item">
-            <div className="btn-group">
+            <div className="btn-group dropup">
               <button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Share <span className="caret"></span>
               </button>
@@ -61,10 +61,10 @@ var Template = function(self){
             </div>
           </div>
           <div className="report-footer-item" onClick={(event) => self.onDownload()}>
-            <button type="button" className="btn btn-default">Download</button>;
+            <button type="button" className="btn btn-default">Download</button>
           </div>
           <div className="report-footer-item" data-toggle="modal" data-target="#embed">
-            <button type="button" className="btn btn-default">Embed</button>;
+            <button type="button" className="btn btn-default">Embed</button>
           </div>
         </div>
       </div>
