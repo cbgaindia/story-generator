@@ -12,9 +12,18 @@ var Template = function (self) {
     <div className="budget-attributes">
       <div className="budget-attributes-title">Budget Attributes</div>
       <div className="budget-attributes-labels">
-        <div className="budget-attribute selected">BE - Budget Estimate</div>
-        <div className="budget-attribute">RE - Revised Estimate</div>
-        <div className="budget-attribute">AC - Actuals</div>
+        <div className="budget-attribute selected" 
+          onClick={(event) => self.toggleBudgetAttribute("BE")}>
+            BE - Budget Estimate
+        </div>
+        <div className="budget-attribute" 
+          onClick={(event) => self.toggleBudgetAttribute("RE")}>
+            RE - Revised Estimate
+        </div>
+        <div className="budget-attribute" 
+          onClick={(event) => self.toggleBudgetAttribute("AC")}>
+            AC - Actuals
+        </div>
       </div>
     </div>
     /* jshint ignore:end */

@@ -8,7 +8,7 @@ var ReportFooterTemplate = require("../templates/components/report_footer.jsx");
 var ReportFooter = React.createClass({
 
   onDownload: function () {
-    var report = document.querySelector("#main-container > div > div.content > div.content-body > div.report");
+    var report = document.querySelector("#main-container > div > div.content > div.content-body");
     var saveReport = function(blob,name){
       var url = URL.createObjectURL(blob);
 
