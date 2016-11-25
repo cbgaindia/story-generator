@@ -6,7 +6,8 @@ var React    = require("react"),
 var IndicatorsSelector = require("../../components/indicators_selector"),
     StatesSelector     = require("../../components/states_selector"),
     Report             = require("../../components/report"),
-    ReportFooter = require("../../components/report_footer");
+    ReportFooter = require("../../components/report_footer"),
+    BudgetAttributeSelector = require("../../components/budget_attribute_selector");
 
 var SideNavigationTemplate = function (self) {
   if (self.state.showSideNavigation) {
@@ -66,6 +67,9 @@ var Template = function (self) {
 
           <div className="report-meta">
             <div>
+              <BudgetAttributeSelector location={self.props.location}
+                            params={self.props.params}
+                            states={self.state.states} />
               <StatesSelector location={self.props.location}
                             params={self.props.params}
                             states={self.state.states} />

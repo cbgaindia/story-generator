@@ -19,7 +19,6 @@ var Template = function (self) {
       </div>
     );
   }
-  
   return (
     <div className="report">
       <div className="report-header">
@@ -27,14 +26,6 @@ var Template = function (self) {
           <div className="report-title">{self.state.selectedIndicator.name}</div>
         </div>
         <div className="report-header-right">
-          <div className="budget-attributes">
-            <div className="budget-attributes-title">Budget Attributes</div>
-            <div className="budget-attributes-labels">
-              <span className="budget-attribute selected">BE</span>
-              <span className="budget-attribute">AC</span>
-              <span className="budget-attribute">RE</span>
-            </div>
-          </div>
         </div>
       </div>
       <div className="mk-viz">

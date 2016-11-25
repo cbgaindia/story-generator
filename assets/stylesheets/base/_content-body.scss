@@ -77,39 +77,6 @@
   width: 100%;
 }
 
-.budget-attributes {
-  width: 100%;
-}
-
-.budget-attributes-title {
-  font-weight: bold;
-  font-size: 1.3em;
-}
-
-.budget-attributes-labels {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: space-around;
-  height: 32px;
-  border-radius: 4px;
-  background-color: rgba(204, 204, 204, 0.15);
-  border: solid 1px rgba(151, 151, 151, 0.25);
-  cursor: pointer;
-  .budget-attribute {
-    text-transform: uppercase;
-    margin: auto;
-    &.selected {
-      border-radius: 3px;
-      background-color: $color1;
-      border: solid 1px #5b5e74;
-      color: white;
-      font-weight: bold;
-      padding: .1em .8em;
-    }
-  }
-}
-
 .embed-url {
   width: 100%;
 }

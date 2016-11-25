@@ -26,8 +26,8 @@
   }
   .project-description {
     border-radius: .3em;
-    background-color: $color2;
-    border: solid 1px $color2;
+    background-color: $baseColor;
+    border: solid 1px $border-color;
     padding: 0.3em;
     min-height: 70px;
     max-height: 90px;
@@ -39,7 +39,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $color2;
+  background-color: $baseColor;
   input {
     width: 100%;
     border-radius: 0.3em;
@@ -87,8 +87,8 @@
 .credits {
   width: 100%;
   margin-top: .3em;
-  background-color: $color2;
-  border: solid 1px $color2;
+  background-color: $baseColor;
+  border: solid 1px $border-color;
   border-radius: .3em;
   .credits-links,
   .credits-info {

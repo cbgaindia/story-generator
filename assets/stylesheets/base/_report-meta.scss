@@ -1,6 +1,7 @@
 .report-meta {
   display: flex;
-  width: 25%;
+  width: 35%;
+  padding: .5em 1em;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -17,6 +18,32 @@
     width: 100%;
     .meta-info-title {
       font-size: 1.3em;
+      font-weight: bold;
+    }
+  }
+}
+
+.budget-attributes {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.budget-attributes-title {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+.budget-attributes-labels {
+  display: flex;
+  flex-direction: column;
+  .budget-attribute {
+    text-transform: uppercase;
+    margin: 2px 0;
+    background: $lighther;
+    padding: 0.3em 1em;
+    &.selected {
+      background: $baseColor;  
+      border: solid 1px #0075a9;
       font-weight: bold;
     }
   }
