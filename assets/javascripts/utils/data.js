@@ -9,8 +9,16 @@ var COLORS = [
   "#004B6C",
   "#819D2C"
 ];
+
+var BUDGETATTRIBUTES = [
+  { "name":"BE","value" : "BUDGET ESTIMATE"},
+  { "name":"RE","value" : "REVISED ESTIMATE"},
+  { "name":"AC","value" : "ACTUALS"}
+]
+
 module.exports = {
   DATA: DATA,
-  COLORS: COLORS
+  COLORS: COLORS,
+  BUDGETATTRIBUTES: BUDGETATTRIBUTES
 };
 

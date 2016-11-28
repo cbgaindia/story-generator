@@ -2,7 +2,8 @@
 
 var React      = require("react"),
     ReactDOM   = require("react-dom"),
-    _          = require("lodash");
+    _          = require("lodash"),
+    BUDGETATTRIBUTES = require("../utils/data").BUDGETATTRIBUTES;
 
 var DATA = JSON.parse(JSON.stringify(require("../utils/data").DATA));
 var COLORS = require("../utils/data").COLORS;
@@ -17,7 +18,7 @@ var Report = React.createClass({
     return {
       selectedStates   : [],
       selectedIndicator: {},
-      selectedAttribute: "BE",
+      selectedAttribute: BUDGETATTRIBUTES[0].name,
       config           : {}
     };
   },
