@@ -17,6 +17,7 @@ var Report = React.createClass({
     return {
       selectedStates   : [],
       selectedIndicator: {},
+      selectedAttribute: "BE",
       config           : {}
     };
   },
