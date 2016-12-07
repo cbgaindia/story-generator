@@ -52,7 +52,8 @@ var MapLeaflet = React.createClass(
                 topoLayer     : null,
                 topojson      : null,
                 statetooltip  :{},
-                duration      :{"duration":yearsData[0].duration}
+                duration      :{"duration":yearsData[0].duration},
+                allallocations:[]
             };
         },
     
@@ -71,6 +72,10 @@ var MapLeaflet = React.createClass(
         },
     
         componentDidUpdate:function(prevProps, prevState) {
+           if(prevProps.indicator.slug!=this.props.indicator.slug){
+            this.state.allallocations = this.computeBands();
+            this.state.allocations = this.getStateIndicatorValue(this.state.statetooltip.name);
+           };
 
         },
         
@@ -90,7 +95,8 @@ var MapLeaflet = React.createClass(
                                    
            this.state.topojson = topodata;
            this.map = L.map(id,{maxZoom:6,minZoom:4});
-           this.map.setView([23.59, 81.96], 5);
+           this.map.setView([23.59, 81.96], 4);
+           this.state.allallocations = this.computeBands();
                                    
            var tileLayer = L.tileLayer("https://api.mapbox.com/styles/v1/rachetana/ciu45yngf00aj2ho8vvno6kum/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmFjaGV0YW5hIiwiYSI6ImNpc3g2cnlmZTA4NW0yeXBnMDZiNHUyMWMifQ.XCAmIR_6wdmkYDOBYrGk9Q");
            tileLayer.addTo(this.map);
@@ -100,13 +106,18 @@ var MapLeaflet = React.createClass(
            topoLayer.addTo(this.map);
            topoLayer.eachLayer(this.handleLayer);
 
-
-                                   
+           
         },
        handleLayer:function(layer){
-           var randomValue = Math.random(),
-           fillColor = colorScale(randomValue).hex();
-           
+
+                                   
+           var allo = _.chain(this.state.allallocations)
+           .find(function(item){
+                 return (item.state===layer.feature.properties.NAME_1);})
+           .valueOf();
+                             
+           var fillColor = this.fillColor(allo);
+
            layer.setStyle({
                           fillColor : fillColor,
                           fillOpacity: 0.75,
@@ -124,33 +135,109 @@ var MapLeaflet = React.createClass(
                     _self.leaveLayer(this);
                     });
        },
-       getStateIndicatorValue:function(state,indicator,years){
-           var stateoutput = _.chain(DATA)
-                   .find(function(item){return item.name===state; })
-                   .valueOf();
-           if(_.isEmpty(stateoutput)){
-            return;
-           }
-           var indicatordetails = _.chain(stateoutput.indicators)
-                   .find(function(item){return item.slug===indicator;})
-                   .valueOf();
-           var indTimeFrame = _.chain(indicatordetails.budgets)
-                   .find(function(item){return (item.years.from===years.from && item.years.to === years.to);})
-                   .valueOf();
-           return indTimeFrame.allocations[0];
+       fillColor:function(allo){
+               
+               if (!allo){
+                 return 'grey';
+               }
+               var band = allo.band;
+
+               if(band===1){
+                 return '#F1EEF6';
+               }
+               if(band===2){
+                 return '#BDC9E1';
+               }
+               if(band===3){
+                 return '#74A9CF';
+               }
+               if(band===4){
+                 return '#2B8CBE';
+               }
+               if(band===5){
+                 return '#045A8D';
+               }
        },
+       computeBands:function(){
+       var allAllocV1 = this.getAllStateIndicatorValue(this.props.indicator.slug,this.state.years[this.state.yearchosen.yearchosen]);
+       var min = Math.min.apply(null, allAllocV1.map(function(item) {
+                                                     return item.allocations;
+                                                     }))
+       var max = Math.max.apply(null, allAllocV1.map(function(item) {
+                                                     return item.allocations;
+                                                     }))
+       var allAllocV2 = [];
+       var self= this;
+       _.each(allAllocV1,function(item){
+              var retalloc = {
+              "state": item.state,
+              "allocation": item.allocations,
+              "unit":item.unit,
+              "band":self.getband(item.allocations,min,max)
+              }
+              allAllocV2= _.concat(allAllocV2,retalloc)
+              })
+       return allAllocV2;
+       },
+       getStateIndicatorValue:function(state){
+
+           var chosenstate = _.chain(this.state.allallocations)
+                                   .find(function(item){
+                                         return (item.state==state);})
+                          .valueOf();
+           if(_.isEmpty(chosenstate)){
+           return;
+           }
+           var retallocations = {
+                   "allocations":chosenstate
+           }
+           return retallocations;
+       },
+       getAllStateIndicatorValue:function(indicator,years){
+           var retallocations = [];
+                                   
+           _.each(DATA,function(item){
+                  var indicatordetails = _.chain(item.indicators)
+                  .find(function(item){return item.slug===indicator;})
+                  .valueOf();
+                  var indTimeFrame = _.chain(indicatordetails.budgets)
+                  .find(function(item){return (item.years.from===years.from && item.years.to === years.to);})
+                  .valueOf();
+                  var retalloc = [{
+                            "state": item.name,
+                            "allocations":Number(indTimeFrame.allocations[0].amount),
+                            "unit":indicatordetails.unit
+                  }]
+                  retallocations= _.concat(retallocations,retalloc);
+            })
+       return retallocations;
+       },
+       getband:function(item,min,max){
+          var value = (item-min)*100/(max-min)
+          if(value>=0 && value <20)
+            return 1;
+          if(value>=20 && value <40)
+            return 2;
+          if(value>=40 && value <60)
+           return 3;
+          if(value>=60 && value <80)
+           return 4;
+          if(value>=80 && value <=100)
+           return 5;
+                                          },
        enterLayer:function(layer){
-           var getState = layer.feature.properties.NAME_1;
-           var getYears = this.state.years[this.state.yearchosen.yearchosen];
-           this.setState({
-                         statetooltip:{"name":getState},
-                         allocations:this.getStateIndicatorValue(getState,this.props.indicator.slug,getYears)
-                         });
-           layer.bringToFront();
-           layer.setStyle({
-                         weight:2,
-                         opacity: 1
-                         });
+           var chosenState = layer.feature.properties.NAME_1;
+           if(this.state.statetooltip!=chosenState){
+               this.setState({
+                             statetooltip:{"name":chosenState},
+                             allocations:this.getStateIndicatorValue(chosenState)
+                             });
+               layer.bringToFront();
+               layer.setStyle({
+                             weight:2,
+                             opacity: 1
+                             });
+            }
        },
        leaveLayer:function(layer){
            layer.bringToBack();

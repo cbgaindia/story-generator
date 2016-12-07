@@ -24,9 +24,15 @@
     right: 2em;
     height: 10em;
     z-index: 6;
-    color: #31708f;
-    font-size: .85em;
-    display: block;
+    color:black;
+    padding:.5em .75em;
+    font-size:.85em;
+    display:block;
+    width: 200px;
+    height: 67px;
+    background-color: rgba(233, 234, 229, 0.7);
+    text-align: center;
+    line-height: 30px;
 }
 .statetooltip{
   position: absolute;
@@ -44,10 +50,9 @@
     line-height: 30px;
 }
 
-
 .legendcontainer{
     position: absolute;
-    top: 50em;
+    top: 45em;
     right: 2em;
     height: 10em;
     z-index: 6;
