@@ -7,22 +7,9 @@ var React      = require("react"),
     chroma     =require("chroma-js"),
     _          =require("lodash");
 
-var config = {};
 var DATA = require("../utils/data").DATA;
-var yearsData = [{"from"   :"2012",
-             "to"      :"2013",
-             "duration":"2012-13"},
-             {"from"   :"2013",
-             "to"      :"2014",
-             "duration":"2013-14"},
-             {"from"   :"2014",
-             "to"      :"2015",
-             "duration":"2014-15"},
-             {"from"   :"2015",
-             "to"      :"2016",
-                 "duration":"2015-16"}];
-// using webpack json loader we can import our topojson file like this
-var topodata = require("../../../data/india_states.topo.json");
+var yearsData = require("../utils/data").YEARS;
+var topodata = require("../../../data/india_state_boundaries.json");
 
 L.TopoJSON = L.GeoJSON.extend({
     addData: function(jsonData) {
@@ -37,8 +24,7 @@ L.TopoJSON = L.GeoJSON.extend({
                   }
                 }
             });
-var colorScale = chroma
-.scale(["#D5E3FF", "#003171"]);
+var topoLayer = new L.TopoJSON();
 
 var MapTemplate = require("../templates/components/map.jsx");
 
@@ -48,69 +34,57 @@ var MapLeaflet = React.createClass(
             return {
                 years         : yearsData,
                 yearchosen    : {"yearchosen":0},
+                allallocations:[],
                 allocations   : {},
                 topoLayer     : null,
                 topojson      : null,
                 statetooltip  :{},
                 duration      :{"duration":yearsData[0].duration},
-                allallocations:[]
+                bands         :{}
             };
         },
     
         // a variable to store our instance of L.map
         map: null,
     
-        componentWillMount: function() {
-            // code to run just before adding the map
-        },
-    
         componentDidMount: function() {
             // create the Leaflet map object
+            this.reinitialize(this.props);
             if (!this.map) {
                 this.init(this.getID());
             }
-        },
-    
-        componentDidUpdate:function(prevProps, prevState) {
-           if(prevProps.indicator.slug!=this.props.indicator.slug){
-            this.state.allallocations = this.computeBands();
-            this.state.allocations = this.getStateIndicatorValue(this.state.statetooltip.name);
-           };
-
+           topoLayer.eachLayer(this.handleLayer);
+           
         },
         
-        componentWillUnmount: function() {
+       componentWillReceiveProps: function (nextProps) {
+            this.reinitialize(nextProps);
+           
+       },
+       componentWillUnmount: function() {
             this.map.remove();
         },
-        
-                                   
         getID: function() {
             // get the "id" attribute of our component's DOM node
             return ReactDOM.findDOMNode(this);
         },
-          init: function(id) {
-            if (this.map) {
-                return;
-            }
-                                   
+        reinitialize:function(props){
+           this.state.allallocations = this.computeBands(props);
+           if(this.state.statetooltip.name)
+               this.state.allocations = this.getStateIndicatorValue(this.state.statetooltip.name);
+        },
+        init: function(id) {
            this.state.topojson = topodata;
            this.map = L.map(id,{maxZoom:6,minZoom:4});
            this.map.setView([23.59, 81.96], 4);
-           this.state.allallocations = this.computeBands();
                                    
            var tileLayer = L.tileLayer("https://api.mapbox.com/styles/v1/rachetana/ciu45yngf00aj2ho8vvno6kum/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmFjaGV0YW5hIiwiYSI6ImNpc3g2cnlmZTA4NW0yeXBnMDZiNHUyMWMifQ.XCAmIR_6wdmkYDOBYrGk9Q");
            tileLayer.addTo(this.map);
-           
-           var topoLayer = new L.TopoJSON();
            topoLayer.addData(this.state.topojson);
            topoLayer.addTo(this.map);
-           topoLayer.eachLayer(this.handleLayer);
-
            
         },
        handleLayer:function(layer){
-
-                                   
            var allo = _.chain(this.state.allallocations)
            .find(function(item){
                  return (item.state===layer.feature.properties.NAME_1);})
@@ -136,7 +110,6 @@ var MapLeaflet = React.createClass(
                     });
        },
        fillColor:function(allo){
-               
                if (!allo){
                  return 'grey';
                }
@@ -158,14 +131,21 @@ var MapLeaflet = React.createClass(
                  return '#045A8D';
                }
        },
-       computeBands:function(){
-       var allAllocV1 = this.getAllStateIndicatorValue(this.props.indicator.slug,this.state.years[this.state.yearchosen.yearchosen]);
+       computeBands:function(props){
+       var allAllocV1 = this.getAllStateIndicatorValue(props.indicator.slug,this.state.years[this.state.yearchosen.yearchosen]);
        var min = Math.min.apply(null, allAllocV1.map(function(item) {
                                                      return item.allocations;
                                                      }))
        var max = Math.max.apply(null, allAllocV1.map(function(item) {
                                                      return item.allocations;
-                                                     }))
+                                                }))
+       this.state.bands={
+          "20%":[min,min+(20*(max-min))/100,1],
+          "40%":[min+(20*(max-min))/100,min+(40*(max-min))/100,2],
+          "60%":[min+(40*(max-min))/100,min+(60*(max-min))/100,3],
+          "80%":[min+(60*(max-min))/100,min+(80*(max-min))/100,4],
+          "100%":[min+(80*(max-min))/100,min+(100*(max-min))/100,5]
+       }
        var allAllocV2 = [];
        var self= this;
        _.each(allAllocV1,function(item){
@@ -173,18 +153,19 @@ var MapLeaflet = React.createClass(
               "state": item.state,
               "allocation": item.allocations,
               "unit":item.unit,
-              "band":self.getband(item.allocations,min,max)
+              "band":self.getband(item.allocations)
               }
+              console.log(retalloc.state + ","+retalloc.allocation+" , "+retalloc.band);
+
               allAllocV2= _.concat(allAllocV2,retalloc)
               })
        return allAllocV2;
        },
        getStateIndicatorValue:function(state){
-
            var chosenstate = _.chain(this.state.allallocations)
                                    .find(function(item){
                                          return (item.state==state);})
-                          .valueOf();
+                                   .valueOf();
            if(_.isEmpty(chosenstate)){
            return;
            }
@@ -212,19 +193,12 @@ var MapLeaflet = React.createClass(
             })
        return retallocations;
        },
-       getband:function(item,min,max){
-          var value = (item-min)*100/(max-min)
-          if(value>=0 && value <20)
-            return 1;
-          if(value>=20 && value <40)
-            return 2;
-          if(value>=40 && value <60)
-           return 3;
-          if(value>=60 && value <80)
-           return 4;
-          if(value>=80 && value <=100)
-           return 5;
-                                          },
+       getband:function(stateIndValue){
+          var band =_.find(this.state.bands,function(item){
+              return stateIndValue>=item[0] && stateIndValue<=item[1];
+          })
+          return band[2];
+        },
        enterLayer:function(layer){
            var chosenState = layer.feature.properties.NAME_1;
            if(this.state.statetooltip!=chosenState){

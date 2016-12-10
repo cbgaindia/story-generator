@@ -171,6 +171,7 @@ var Report = React.createClass({
       })
       .valueOf();
   },
+
   render: function () {
     return ReportTemplate(this);
   }

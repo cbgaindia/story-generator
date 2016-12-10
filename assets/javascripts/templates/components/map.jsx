@@ -49,9 +49,9 @@ var Template=function(self){
     var LegendStep = function(props){
         var legendStep = {
             backgroundColor: props.bgColor
-        };
+        }
         return (
-            <li><span style={legendStep}></span>{props.children}</li>
+            <li><span style={legendStep}></span>{props.band}</li>
         );
     };
 
@@ -78,11 +78,11 @@ var Template=function(self){
         <div className="legendcontainer">
            <div className='legend-scale'>
               <ul className='legend-labels'>
-                    <LegendStep bgColor='#F1EEF6'>0 - 20%</LegendStep>
-                    <LegendStep bgColor='#BDC9E1'>40%</LegendStep>
-                    <LegendStep bgColor='#74A9CF'>60%</LegendStep>
-                    <LegendStep bgColor='#2B8CBE'>80%</LegendStep>
-                    <LegendStep bgColor='#045A8D'>100%</LegendStep>
+                    <LegendStep bgColor='#F1EEF6' band='20%' range={self.state.bands["20%"]}/>
+                    <LegendStep bgColor='#BDC9E1' band='40%' range={self.state.bands["40%"]}/>
+                    <LegendStep bgColor='#74A9CF' band='60%' range={self.state.bands["60%"]}/>
+                    <LegendStep bgColor='#2B8CBE' band='80%' range={self.state.bands["80%"]}/>
+                    <LegendStep bgColor='#045A8D' band='100%' range={self.state.bands["100%"]}/>
              </ul>
           </div>
         </div>
