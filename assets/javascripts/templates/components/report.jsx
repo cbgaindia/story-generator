@@ -29,7 +29,7 @@ var Template = function (self) {
         </div>
       </div>
       <div className="mk-viz">
-          {_.isEmpty(self.state.selectedStates)?<MapLeaflet indicator={self.state.selectedIndicator}/>:<Visualization config={self.state.config} />}
+          {_.isEmpty(self.state.selectedStates)?<MapLeaflet indicator={self.state.selectedIndicator} years={self.state.years} bands={self.state.bands} attribute={self.state.selectedAttribute} allallocations={self.state.allallocations}/>:<Visualization config={self.state.config} />}
       </div>
       <div className="content-footer">
         <div className="information">

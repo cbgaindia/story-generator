@@ -27,7 +27,7 @@ var Template=function(self){
             )
         }
         return (
-<span>{props.allocations.allocations.unit.length > 0 && props.allocations.allocations.unit}&nbsp; {props.allocations.allocations.allocation}</span>
+<span> {props.allocations.allocations}</span>
         )
     };
 
