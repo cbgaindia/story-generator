@@ -51,7 +51,8 @@ var Template=function(self){
             backgroundColor: props.bgColor
         }
         return (
-            <li><span style={legendStep}></span>{props.band}</li>
+            <li><span className='legendspan' style={legendStep}></span><span className='legendspanside'>{props.range[0]} - {props.range[1]}</span>
+            </li>
         );
     };
 

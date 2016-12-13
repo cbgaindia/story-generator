@@ -39,9 +39,9 @@ var MapLeaflet = React.createClass(
                 yearchosen    : {"yearchosen":0},
                 allocations   : {},
                 statetooltip  : {},
-                bands         : {},
+                bands         : this.props.bands,
                 years         : this.props.years,
-                duration         : {"duration":"2012-13"}
+                duration      : {"duration":"2012-13"}
             };
         },
     
@@ -70,6 +70,7 @@ var MapLeaflet = React.createClass(
            if(this.state.statetooltip.name)
                this.state.allocations = this.getStateIndicatorValue(this.state.statetooltip.name);
            topoLayer.eachLayer(this.handleLayer);
+           this.state.bands = props.bands;
         },
         init: function(id) {
            this.state.topojson = topodata;
