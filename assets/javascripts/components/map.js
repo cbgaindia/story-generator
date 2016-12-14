@@ -187,7 +187,6 @@ var MapLeaflet = React.createClass(
            var yrCh = this.state.years[this.state.yearchosen.yearchosen];
            this.state.allallocations = this.props.allallocations[yrCh.from+"-"+yrCh.to];
            this.state.bands = this.computeBands(this.state.allallocations);
-           console.log(this.state.bands);
            topoLayer.eachLayer(this.handleLayer);
            this.setState({
                   yearchosen:{"yearchosen":yearchosenvalue}
