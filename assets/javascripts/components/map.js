@@ -37,11 +37,12 @@ var MapLeaflet = React.createClass(
                 topoLayer     : null,
                 topojson      : null,
                 yearchosen    : {"yearchosen":0},
+                allallocations   : {},
                 allocations   : {},
                 statetooltip  : {},
                 bands         : this.props.bands,
                 years         : this.props.years,
-                duration      : {"duration":"2012-13"}
+                duration      : {"duration":this.props.years[0].duration}
             };
         },
     
@@ -67,10 +68,14 @@ var MapLeaflet = React.createClass(
             return ReactDOM.findDOMNode(this);
         },
         reinitialize:function(props){
+ 
+           var yrCh = this.state.years[this.state.yearchosen.yearchosen];
+           this.state.allallocations = this.props.allallocations[yrCh.from+"-"+yrCh.to];
+           this.state.bands = this.computeBands(this.state.allallocations);
            if(this.state.statetooltip.name)
                this.state.allocations = this.getStateIndicatorValue(this.state.statetooltip.name);
            topoLayer.eachLayer(this.handleLayer);
-           this.state.bands = props.bands;
+
         },
         init: function(id) {
            this.state.topojson = topodata;
@@ -81,12 +86,13 @@ var MapLeaflet = React.createClass(
            tileLayer.addTo(this.map);
            topoLayer.addData(this.state.topojson);
            topoLayer.addTo(this.map);
-           
         },
        handleLayer:function(layer){
-           var yearAllo = this.props.allallocations["2012-2013"];
+           var yearAllo = this.state.allallocations;
+           if(!yearAllo){
+             return;
+           }
            var band = 0;
-           console.log(layer.feature.properties.NAME_1)
            if (yearAllo[layer.feature.properties.NAME_1]){
              band = this.getband(yearAllo[layer.feature.properties.NAME_1]);
            }
@@ -131,7 +137,7 @@ var MapLeaflet = React.createClass(
                }
        },
        getband:function(value){
-           var band = _.chain(this.props.bands)
+           var band = _.chain(this.state.bands)
                        .map(function(item){return item})
                        .find(function(fitem){return value>=fitem[0] && value<=fitem[1]})
                        .value();
@@ -139,7 +145,10 @@ var MapLeaflet = React.createClass(
        
        },
        getStateIndicatorValue:function(state){
-           var yearAllo = this.props.allallocations["2012-2013"];
+           var yearAllo = this.state.allallocations;
+           if(!yearAllo){
+              return;
+            }
            var chosenstate = yearAllo[state];
            
            if(_.isEmpty(chosenstate)){
@@ -175,18 +184,41 @@ var MapLeaflet = React.createClass(
        
        },
        yearChosenChange:function(yearchosenvalue){
+           var yrCh = this.state.years[this.state.yearchosen.yearchosen];
+           this.state.allallocations = this.props.allallocations[yrCh.from+"-"+yrCh.to];
+           this.state.bands = this.computeBands(this.state.allallocations);
+           console.log(this.state.bands);
+           topoLayer.eachLayer(this.handleLayer);
            this.setState({
-                  duration:{"duration":this.state.years[yearchosenvalue]},
                   yearchosen:{"yearchosen":yearchosenvalue}
              });
-           var getState = this.state.statetooltip.name;
-           var getYears = this.state.years[this.state.yearchosen.yearchosen];
+           var chosenState = this.state.statetooltip.name;
+           var chosenYear = this.state.years[this.state.yearchosen.yearchosen];
            this.setState({
-                         statetooltip:{"name":getState},
-                         duration:{"duration":getYears.duration},
-                         allocations:this.getStateIndicatorValue(getState,this.props.indicator.slug,getYears)
+                         statetooltip:{"name":chosenState},
+                         duration:{"duration":chosenYear.duration},
+                         allocations:this.getStateIndicatorValue(chosenState)
                          });
        },
+       computeBands:function(allocations){
+       
+       var min = Math.min.apply(null, _.map(allocations,function(item) {
+                                            return item;
+                                            }));
+       var max = Math.max.apply(null, _.map(allocations,function(item) {
+                                            return item;
+                                            }));
+       
+       var retvalue = {
+       "20%":[min,min+(20*(max-min))/100,1],
+       "40%":[min+(20*(max-min))/100,min+(40*(max-min))/100,2],
+       "60%":[min+(40*(max-min))/100,min+(60*(max-min))/100,3],
+       "80%":[min+(60*(max-min))/100,min+(80*(max-min))/100,4],
+       "100%":[min+(80*(max-min))/100,min+(100*(max-min))/100,5]
+       };
+       return retvalue;
+       },
+       
         render: function () {
             return MapTemplate(this);
         }

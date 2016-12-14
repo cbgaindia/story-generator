@@ -91,7 +91,6 @@ var Report = React.createClass({
         _.each(returnarr1,function(item){
               returnobj[_.keysIn(item).toString()] = item[_.keysIn(item).toString()]
               })
-              console.log(returnobj)
         return returnobj;
    },
    computeBands:function(allocations){
@@ -110,7 +109,6 @@ var Report = React.createClass({
    "80%":[min+(60*(max-min))/100,min+(80*(max-min))/100,4],
    "100%":[min+(80*(max-min))/100,min+(100*(max-min))/100,5]
      };
-     console.log(retvalue)
     return retvalue;
    },
   getSelectedStatesSlug: function (props) {
