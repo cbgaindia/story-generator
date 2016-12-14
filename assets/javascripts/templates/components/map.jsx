@@ -63,7 +63,7 @@ var Template=function(self){
         for(i=0;i<items.length;i++){
             var item = items[i];
             if(item.getElementsByTagName("input")[0].checked){
-                self.handleClick(i);
+                self.yearChosenChange(i);
             }
         }
     };

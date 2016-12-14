@@ -63,7 +63,7 @@ var MapLeaflet = React.createClass(
             this.map.remove();
         },
         getID: function() {
-            // get the "id" attribute of our component's DOM node
+            // get the "id" attribute of our component"s DOM node
             return ReactDOM.findDOMNode(this);
         },
         reinitialize:function(props){
@@ -88,9 +88,8 @@ var MapLeaflet = React.createClass(
            var band = 0;
            console.log(layer.feature.properties.NAME_1)
            if (yearAllo[layer.feature.properties.NAME_1]){
-             console.log(layer.feature.properties.NAME_1 +" , "+yearAllo[layer.feature.properties.NAME_1])
              band = this.getband(yearAllo[layer.feature.properties.NAME_1]);
-                 }
+           }
            
            var fillColor = this.fillColor(band);
 
@@ -112,35 +111,35 @@ var MapLeaflet = React.createClass(
                     });
        },
        fillColor:function(band){
-               if (band==0){
-                 return 'grey';
+               if (band===0){
+                 return "grey";
                }
                if(band===1){
-                 return '#F1EEF6';
+                 return "#F1EEF6";
                }
                if(band===2){
-                 return '#BDC9E1';
+                 return "#BDC9E1";
                }
                if(band===3){
-                 return '#74A9CF';
+                 return "#74A9CF";
                }
                if(band===4){
-                 return '#2B8CBE';
+                 return "#2B8CBE";
                }
                if(band===5){
-                 return '#045A8D';
+                 return "#045A8D";
                }
        },
        getband:function(value){
            var band = _.chain(this.props.bands)
                        .map(function(item){return item})
                        .find(function(fitem){return value>=fitem[0] && value<=fitem[1]})
-                       .value()
+                       .value();
            return band[2];
        
        },
        getStateIndicatorValue:function(state){
-           var yearAllo = this.props.allallocations["2012-2013"]
+           var yearAllo = this.props.allallocations["2012-2013"];
            var chosenstate = yearAllo[state];
            
            if(_.isEmpty(chosenstate)){
@@ -175,7 +174,7 @@ var MapLeaflet = React.createClass(
                          });
        
        },
-       handleClick(yearchosenvalue){
+       yearChosenChange:function(yearchosenvalue){
            this.setState({
                   duration:{"duration":this.state.years[yearchosenvalue]},
                   yearchosen:{"yearchosen":yearchosenvalue}
