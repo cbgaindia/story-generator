@@ -62,7 +62,9 @@ var Template=function(self){
         var i = 0;
         for(i=0;i<items.length;i++){
             var item = items[i];
+            item.className = "timeline__step";
             if(item.getElementsByTagName("input")[0].checked){
+                item.className = "timeline__step done";
                 self.yearChosenChange(i);
             }
         }

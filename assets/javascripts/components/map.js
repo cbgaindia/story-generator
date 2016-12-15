@@ -184,7 +184,7 @@ var MapLeaflet = React.createClass(
        
        },
        yearChosenChange:function(yearchosenvalue){
-           var yrCh = this.state.years[this.state.yearchosen.yearchosen];
+           var yrCh = this.state.years[yearchosenvalue];
            this.state.allallocations = this.props.allallocations[yrCh.from+"-"+yrCh.to];
            this.state.bands = this.computeBands(this.state.allallocations);
            topoLayer.eachLayer(this.handleLayer);
@@ -192,7 +192,7 @@ var MapLeaflet = React.createClass(
                   yearchosen:{"yearchosen":yearchosenvalue}
              });
            var chosenState = this.state.statetooltip.name;
-           var chosenYear = this.state.years[this.state.yearchosen.yearchosen];
+           var chosenYear = this.state.years[yearchosenvalue];
            this.setState({
                          statetooltip:{"name":chosenState},
                          duration:{"duration":chosenYear.duration},
