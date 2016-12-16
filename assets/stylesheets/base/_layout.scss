@@ -26,10 +26,20 @@ main {
 }
 
 .btn-bat {
-  background-color: $baseColor;
-  color: white;
+  background-color: #f6f6f6;
   font-weight: bold;
+  width: 100%;
+  height: 32px;
+  border: 1px;
+  color: #494949;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0;
 }
 
+.w100 {
+  width: 100%;
+}
 @import "side-nav";
 @import "content";
