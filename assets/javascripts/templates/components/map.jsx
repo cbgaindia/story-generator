@@ -27,7 +27,7 @@ var Template=function(self){
             )
         }
         return (
-<span>{props.allocations.allocations.unit.length > 0 && props.allocations.allocations.unit}&nbsp; {props.allocations.allocations.allocation}</span>
+<span> {props.allocations.allocations}</span>
         )
     };
 
@@ -49,9 +49,10 @@ var Template=function(self){
     var LegendStep = function(props){
         var legendStep = {
             backgroundColor: props.bgColor
-        };
+        }
         return (
-            <li><span style={legendStep}></span>{props.children}</li>
+            <li><span className='legendspan' style={legendStep}></span><span className='legendspanside'>{props.range[0]} - {props.range[1]}</span>
+            </li>
         );
     };
 
@@ -61,8 +62,10 @@ var Template=function(self){
         var i = 0;
         for(i=0;i<items.length;i++){
             var item = items[i];
+            item.className = "timeline__step";
             if(item.getElementsByTagName("input")[0].checked){
-                self.handleClick(i);
+                item.className = "timeline__step done";
+                self.yearChosenChange(i);
             }
         }
     };
@@ -78,11 +81,11 @@ var Template=function(self){
         <div className="legendcontainer">
            <div className='legend-scale'>
               <ul className='legend-labels'>
-                    <LegendStep bgColor='#F1EEF6'>0 - 20%</LegendStep>
-                    <LegendStep bgColor='#BDC9E1'>40%</LegendStep>
-                    <LegendStep bgColor='#74A9CF'>60%</LegendStep>
-                    <LegendStep bgColor='#2B8CBE'>80%</LegendStep>
-                    <LegendStep bgColor='#045A8D'>100%</LegendStep>
+                    <LegendStep bgColor='#F1EEF6' band='20%' range={self.state.bands["20%"]}/>
+                    <LegendStep bgColor='#BDC9E1' band='40%' range={self.state.bands["40%"]}/>
+                    <LegendStep bgColor='#74A9CF' band='60%' range={self.state.bands["60%"]}/>
+                    <LegendStep bgColor='#2B8CBE' band='80%' range={self.state.bands["80%"]}/>
+                    <LegendStep bgColor='#045A8D' band='100%' range={self.state.bands["100%"]}/>
              </ul>
           </div>
         </div>

@@ -6,16 +6,25 @@
 }
 .legend-scale ul li {
     display: block;
-    float: left;
-    width: 40px;
+    width: 150px;
     margin-bottom: 6px;
     text-align: center;
     font-size: 80%;
     list-style: none;
+    padding: 0 0 20px 0;
 }
-ul.legend-labels li span {
+
+.legendspan {
     display: block;
     float: left;
-    height: 15px;
+    height: 20px;
     width: 50px;
+}
+.legendspanside {
+    background-color:white;
+    display: block;
+    float: left;
+    height: 20px;
+    width: 100px;
+    line-height: 20px;
 }

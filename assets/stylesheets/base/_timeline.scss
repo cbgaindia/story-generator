@@ -252,5 +252,7 @@ text-indent: -999em;
 box-shadow: 0 0 0 $timeline-h-summary-size-boxShadow #fff;
 
 top: -($timeline-h-summary-size-step/2)-($timeline-h-summary-size-line/2);
+
+cursor: pointer;
 }
 }
