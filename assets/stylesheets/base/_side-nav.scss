@@ -23,14 +23,16 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 16px;
+    color: #757575;
   }
   .project-description {
-    border-radius: .3em;
+    border-radius: 1px;
     background-color: $baseColor;
     border: solid 1px $border-color;
     padding: 0.3em;
     min-height: 70px;
     max-height: 90px;
+    color: #ffffff; 
   }
 }
 
@@ -89,7 +91,8 @@
   margin-top: .3em;
   background-color: $baseColor;
   border: solid 1px $border-color;
-  border-radius: .3em;
+  border-radius: 4px;
+  color: #ffffff;
   .credits-links,
   .credits-info {
     display: flex;
