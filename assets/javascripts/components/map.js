@@ -84,7 +84,7 @@ var MapLeaflet = React.createClass(
            this.map = L.map(id,{maxZoom:6,minZoom:4});
            this.map.setView([23.59, 81.96], 4);
                                    
-           var tileLayer = L.tileLayer("https://api.mapbox.com/styles/v1/rachetana/ciu45yngf00aj2ho8vvno6kum/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmFjaGV0YW5hIiwiYSI6ImNpc3g2cnlmZTA4NW0yeXBnMDZiNHUyMWMifQ.XCAmIR_6wdmkYDOBYrGk9Q");
+           var tileLayer = L.tileLayer("https://api.mapbox.com/styles/v1/suchismitanaik/cit4r7vpt002j2yqrk7cx5smt/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoic3VjaGlzbWl0YW5haWsiLCJhIjoiY2lqMmZ5N2N5MDAwZnVna25hcjE2b2Q1eCJ9.IYx8Zoc0yNPcp7Snd7yW2A");
            tileLayer.addTo(this.map);
            topoLayer = new L.TopoJSON();
            topoLayer.addData(this.state.topojson);
