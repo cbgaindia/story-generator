@@ -144,7 +144,9 @@ var MapLeaflet = React.createClass(
                        .map(function(item){return item})
                        .find(function(fitem){return value>=fitem[0] && value<=fitem[1]})
                        .value();
-           return band[2];
+           if(band)
+            return band[2];
+           return;
        
        },
        getStateIndicatorValue:function(state){
