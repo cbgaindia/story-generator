@@ -23,7 +23,7 @@ L.TopoJSON = L.GeoJSON.extend({
                   }
                 }
             });
-var topoLayer = new L.TopoJSON();
+var topoLayer;
 
 var MapTemplate = require("../templates/components/map.jsx");
 
@@ -48,10 +48,12 @@ var MapLeaflet = React.createClass(
     
         componentDidMount: function() {
             // create the Leaflet map object
-            this.reinitialize(this.props);
+
             if (!this.map) {
                 this.init(this.getID());
             }
+            
+           this.reinitialize(this.props);
            topoLayer.eachLayer(this.handleLayer);
            
         },
@@ -84,6 +86,7 @@ var MapLeaflet = React.createClass(
                                    
            var tileLayer = L.tileLayer("https://api.mapbox.com/styles/v1/rachetana/ciu45yngf00aj2ho8vvno6kum/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmFjaGV0YW5hIiwiYSI6ImNpc3g2cnlmZTA4NW0yeXBnMDZiNHUyMWMifQ.XCAmIR_6wdmkYDOBYrGk9Q");
            tileLayer.addTo(this.map);
+           topoLayer = new L.TopoJSON();
            topoLayer.addData(this.state.topojson);
            topoLayer.addTo(this.map);
         },
