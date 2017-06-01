@@ -1,16 +1,13 @@
 import React from 'react';
 import { Link, IndexLink } from 'react-router';
-import {expenditure_data} from "../../../../data/expenditure_data";
+import 'bootstrap/dist/css/bootstrap.css';
 
-const tabData = [
-  { name: 'Expenditure', isActive: true }
-];
 
 class Tabs extends React.Component{
   render() {
     return (
       <ul className="nav nav-tabs nav-justified">
-        {tabData.map(function(tab){
+        {this.props.panelTabs.map(function(tab){
           return (
             <Tab data={tab}  isActive={this.props.activeTab === tab} handleClick={this.props.changeTab.bind(this,tab)} />
           );
@@ -23,10 +20,13 @@ class Tabs extends React.Component{
 
 class Tab extends React.Component{
   render() {
+  	
     return (
+   
       <li onClick={this.props.handleClick} className={this.props.isActive ? "active" : null}>
-        <a href="#">{this.props.data.name}</a>
+         <Link to={"#"}>	{this.props.data.title}   </Link> 
       </li>
+     
     );
   }
 }
@@ -35,88 +35,105 @@ Tab.propTypes = {
    params: React.PropTypes.object
 };
 
-function SubIndicators(props){
-  const subIndicators = props.subIndicators;
-  const slugSector =props.slugSector
-  const indicatorList = subIndicators.map((indicator) =>
-    ( 
-      <li className="list-group-item" key={indicator.indicator}>
-        <Link to={"/expenditure/"+slugSector+"/"+indicator.slugIndicator}> {indicator.indicator}</Link> 
+class Records extends React.Component{
+
+   render(){
+   	 let props = this.props
+   	let category = this.props.slug_category
+    let indicatorList = this.props.subRecords.map(function(record){
+
+    return ( 
+      <li className="list-group-item" key={record.record_name}>
+      {props.categoryName == "null"?
+        (<Link to={props.panelTitle+ "/" + record.record_slug }> {record.record_name}</Link>) 
+		:
+		(<Link to={props.panelTitle+"/"+ props.slugCategory +"/"+record.slug_record_name }> {record.record_name}</Link>)	
+		}      
       </li>
-      ))
+      )})
+    
   return(
       <ul className="list-group"> 
         {indicatorList}     
       </ul>
     );
   }
-
-function SectorList(props) {
-  const sectors = props.sectors;
-
-  const listItems = sectors.map((sector) =>
-    ( 
-
-      <div className="panel panel-default">
-          <div className="panel-heading">
-              <h4 className="panel-title">
-      <a data-toggle="collapse" className="collapsed" data-parent="#accordion" href={"#" + sector.slugSector}>{sector.sector}</a>
-      </h4>
-          </div>
-          <div id={sector.slugSector} className="panel-collapse collapse ">           
-                <SubIndicators sector={sector.sector} subIndicators={sector.subIndicators} slugSector={sector.slugSector} />
-          </div>
-      </div>
-      )
-    )
-
-  return (
-    <div className="panel-group select-panel" id="accordion" > 
-      {listItems}
-    </div>
-
-  );
 }
 
-class Content extends React.Component{
+class PanelList extends React.Component{
+  render(){
+	let listItems = null;
+	if(this.props.panelContent.heirarchy_level == 2)
+	{	
+		let panelTitle = this.props.panelContent.title_slug
+		listItems = this.props.panelContent.data.map(function(category){
+		return ( 
+	     <div className="panel panel-default">
+	          <div className="panel-heading">
+	              <h4 className="panel-title">
+			      <a data-toggle="collapse" className="collapsed" data-parent="#accordion" href={"#" + category.slug_category} >{category.category_name}</a>
+			      </h4>
+	          </div>
+	          <div id={category.slug_category} className="panel-collapse collapse ">           
+	                <Records categoryName={category.category_name} subRecords={category.sub_records} slugCategory={category.slug_category} panelTitle={panelTitle} />
+	          </div>
+	      </div>
+	      )
+		})
+	}
+
+	else if(this.props.panelContent.heirarchy_level == 1){	
+		listItems = (
+			<Records categoryName={"null"} subRecords={this.props.panelContent.data} panelTitle={this.props.panelContent.title_slug} />
+			)
+	}
+  return (
+    <div className="panel-group select-panel" id="accordion" > 
+ 		{listItems}
+    </div>
+  );
+}
+}
+
+class PanelContent extends React.Component{
   render() {
-    return (
-      <div>
-        {this.props.activeTab.name === 'Expenditure' ? 
+    return (  
         <section className="panel panel-success card-box-shadow">
-          <SectorList sectors={expenditure_data} />
+          <PanelList panelContent={this.props.activeTab} />
         </section>
-        :null} 
-        {this.props.activeTab.name === 'Revenue' ? 
-        <section className="panel panel-success card-box-shadow">
-        </section>
-        :null} 
-      </div>
     );
   }
 }
-
-
 
 class TabsPanel extends React.Component{
   constructor() {
     super();
     this.state = {
-      activeTab: tabData[0]
+    panelData : null, 
+     activeTab: null
     }
+    this.handleClick = this.handleClick.bind(this)
   }
   
   handleClick(tab) {
     this.setState({activeTab: tab});
   }
+
+  componentWillMount(){
+  	this.setState({
+  		panelData : this.props.panelData, 
+     	activeTab: this.props.panelData[0]
+     })
+  }
   render() {
     return (
-      <div>
-        <Tabs activeTab={this.state.activeTab} changeTab={this.handleClick} />
-        <Content activeTab={this.state.activeTab} />
+      <div className ="row-fluid">
+        <Tabs activeTab={this.state.activeTab} changeTab={this.handleClick} panelTabs={this.props.panelData}/>
+        <PanelContent activeTab={this.state.activeTab} />
       </div>
     );
   }
 }
+
 
 export default TabsPanel;

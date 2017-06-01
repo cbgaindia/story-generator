@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link, IndexLink } from 'react-router';
 import TabsPanel from './subcomponents/TabsPanel';
-import {leftSideBarComponent} from "../../ConfigMap" ;
-
 
 class LeftSidebar extends React.Component{
+
 	render(){
+		let leftSideBarComponent= this.props.config;
 		let logoWrapper = null
 		if(leftSideBarComponent.top_logo.format == "text")
 		{
