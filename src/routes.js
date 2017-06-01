@@ -8,6 +8,7 @@ import IndexComponent from "./components/views/home/Home";
 export default(
 <Route path="/" components={App}>
 	<IndexRoute components={IndexComponent} />
-	<Route path="/expenditure/:sector/:indicator" component={AppController}  />
+	<Route path="/expenditure/:category/:record" component={AppController}  />
+	<Route path="/receipts/:record" component={AppController}  />
 </Route>
 );

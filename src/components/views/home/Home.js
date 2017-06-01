@@ -2,7 +2,6 @@ import React from 'react';
 import {homeComponent} from "../../ConfigMap" ; 
 
 const IndexComponent = () => {
-	console.log(homeComponent)
   return (
     <div className="col-lg-12">
 		<div className="jumbotron text-center">
