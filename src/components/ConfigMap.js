@@ -4,7 +4,7 @@ import {expenditure_data} from "../data/expenditure_data";
 let appConfig = {
 	"app.title" : "Story Generator",
 	"app.version" : "ALPHA"
-	
+		
 };
 
 let homeComponent = {
@@ -53,5 +53,11 @@ let leftSideBarComponent = {
 		],
 	}
 }
+let appComponents = {
+	"homeComponent" : homeComponent,
 
-export {appConfig, homeComponent, leftSideBarComponent};
+	"leftSideBarComponent" :leftSideBarComponent
+
+}
+
+export {appConfig, homeComponent, leftSideBarComponent, appComponents};
