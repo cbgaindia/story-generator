@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import LeftSidebar from "./views/leftsidebar/LeftSidebar";
+import {appComponents} from "./ConfigMap";
 
 class App extends React.Component {
 	render(){		
@@ -7,7 +8,7 @@ class App extends React.Component {
 			<div className="app-wrapper ">			
 				<div className="row full-height">
 					<div className="col-lg-3 leftsidebar ">
-						<LeftSidebar />
+						<LeftSidebar config={appComponents.leftSideBarComponent} />
 					</div>
 					<div className="col-lg-9 full-height view-container ">
 						<div className="container-fluid ">
