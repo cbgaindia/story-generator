@@ -1,22 +1,45 @@
 import React from 'react';
 import { Link, IndexLink } from 'react-router';
-import SelectionPanel from './subcomponents/SelectionPanel';
+import TabsPanel from './subcomponents/TabsPanel';
 
 class LeftSidebar extends React.Component{
+
 	render(){
+		let leftSideBarComponent= this.props.config;
+		let logoWrapper = null
+		if(leftSideBarComponent.top_logo.format == "text")
+		{
+			logoWrapper =  (
+					<h2 className="app-title">{leftSideBarComponent.top_logo.text_config.text}<sub className="app-version">{leftSideBarComponent.top_logo.text_config.release_version}</sub> 
+					<hr className="title-hr" /></h2>
+					)
+		}
+		else if(leftSideBarComponent.top_logo.format == "img")
+		{
+			logoWrapper = (
+				<div >
+					<img className="app-logo" width={leftSideBarComponent.top_logo.img_config.width} src={leftSideBarComponent.top_logo.img_config.source} />
+					<hr className="title-hr" />
+				</div>
+				)
+		}
 		return(
 		<div>
 			<div className="row-fluid">
-				<IndexLink to="/" className="story-generator-logo"> <h2 className="app-title"> Story Generator<sub className="alpha">ALPHA</sub> <hr className="title-hr" /></h2></IndexLink>
+				<IndexLink to="/" className="app-logo"> 
+					{logoWrapper}
+				</IndexLink>
 			</div>
 			<div className="select-panel row-fluid">
-				<SelectionPanel />
+				<TabsPanel panelData = {leftSideBarComponent.selection_panel.panels} />
 			</div>
 			{/*<div className="social-icons-wrapper row-fluid">
 				<ShareIcons />
 			</div>*/}
 			<div className="row-fluid">
-				<a href="https://openbudgetsindia.org/" className="openbudgets-logo"> <h2 className="openbudgets-logo-header"> <img className="openbudgets-logo" src="https://raw.githubusercontent.com/cbgaindia/portal-design/master/logo_OBI/logo_types/light_bg_logo/draft_final/logo_with_text/draft_final.png" /></h2></a>
+				<a href={leftSideBarComponent.bottom_logo.img_config.link} className="organization-logo-link"> 
+				 <img className="organization-logo" src={leftSideBarComponent.bottom_logo.img_config.source} width={leftSideBarComponent.bottom_logo.img_config.width} />
+				</a>
 			</div>
 		</div>
 		);

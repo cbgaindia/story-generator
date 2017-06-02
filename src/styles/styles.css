@@ -135,7 +135,7 @@
         text-decoration: none;
         outline: none;
     }
-    
+    /*
     #accordion .panel {
         border: none;
         box-shadow: none;
@@ -200,10 +200,7 @@
         margin-top: 2px;
     }
     
-    section.panel {
-        height: 450px;
-        overflow-y: scroll;
-    }
+    
     
     section.panel::-webkit-scrollbar {
         width: 10px;
@@ -219,6 +216,7 @@
         background-color: #D3CEAA;
         border: 2px solid #D3CEAA;
     }
+    */
     
     .vis-wrapper {
         height: 430px;
@@ -276,11 +274,6 @@
     }
     
     .sub-text h5 {
-        font-weight: bold;
-    }
-    
-    .app-title {
-        text-align: center;
         font-weight: bold;
     }
     
@@ -423,14 +416,7 @@
         font-size: 0.95em
     }
     
-    sub.alpha {
-        font-size: 0.4em;
-    }
     
-    img.openbudgets-logo {
-        width: 95%;
-        margin-left: 5px;
-    }
     
     .row.row-sub-text {
         margin-left: 0px;
@@ -515,7 +501,6 @@
         font-weight: 700;
         font-size: 18px;
     }
-    
     /*  Home Component */
     
     .home-header-wrapper {
@@ -525,4 +510,93 @@
     .home-header-wrapper h1 {
         font-weight: bold;
         margin: 0px;
+    }
+    /* LeftSideBar */
+    
+    .app-title {
+        text-align: center;
+        font-weight: bold;
+    }
+    
+    sub.app-version {
+        font-size: 0.4em;
+    }
+    
+    img.app-logo {
+        margin: 20px 0px 0px 0px;
+    }
+
+    img.organization-logo {
+        width: 95%;
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+
+    section.panel {
+        height: 450px;
+        overflow-y: scroll;
+    }
+
+    #accordion .panel {
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+    }
+    
+    #accordion .panel-heading {
+        padding: 0;
+    }
+    
+    #accordion .panel-title a {
+        display: block;
+        font-weight: bold;
+        line-height: 23px;
+        color: #000;
+        background: #fff;
+        border: none;
+        border-left: 3px solid #fbc02d;
+        border-bottom: 2px solid #06cde7;
+        padding: 15px 15px 15px 15px;
+        font-size: 14px;
+        position: relative;
+        border-bottom-color: #fbc02d;
+        transition: all 0.5s ease 0s;
+    }
+    
+    #accordion .panel-title a.collapsed {
+        border-bottom: 1px solid rgba(128, 128, 128, 0.34);
+        color: rgba(51, 51, 51, 0.95);
+        font-weight: normal;
+    }
+    
+    #accordion .panel-title a:before {
+        content: "\f106";
+        font-family: FontAwesome;
+        font-size: 14px;
+        color: #333;
+        line-height: 24px;
+        position: absolute;
+        top: 10px;
+        right: 15px;
+    }
+    
+    #accordion .panel-title a.collapsed:before {
+        content: "\f107";
+    }
+    
+    #accordion .panel-body {
+        font-size: 15px;
+        color: #8c8c8c;
+        line-height: 25px;
+        background: #f6f6f6;
+        border: none;
+        padding: 14px 20px;
+    }
+    
+    #accordion .panel {
+        margin-bottom: 2px;
+    }
+    
+    .panel-group .panel+.panel {
+        margin-top: 2px;
     }
