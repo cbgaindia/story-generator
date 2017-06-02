@@ -43,13 +43,13 @@ class Records extends React.Component{
     let indicatorList = this.props.subRecords.map(function(record){
 
     return ( 
-      <li className="list-group-item" key={record.record_name}>
+      <g>
       {props.categoryName == "null"?
-        (<Link to={props.panelTitle+ "/" + record.record_slug }> {record.record_name}</Link>) 
+        (<Link className= "list-item-single-links" to={props.panelTitle+ "/" + record.record_slug }><li className="list-group-item" key={record.record_name}> {record.record_name}</li></Link>) 
 		:
-		(<Link to={props.panelTitle+"/"+ props.slugCategory +"/"+record.slug_record_name }> {record.record_name}</Link>)	
+		(<Link className= "list-item-links" to={props.panelTitle+"/"+ props.slugCategory +"/"+record.slug_record_name }><li className="list-group-item" key={record.record_name}> {record.record_name}</li></Link>)	
 		}      
-      </li>
+		</g>
       )})
     
   return(
