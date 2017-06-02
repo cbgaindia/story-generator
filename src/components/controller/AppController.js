@@ -3,6 +3,7 @@ import RightSidebar from '../views/rightsidebar/RightSidebar';
 import Choropleth from "../views/visualization/Choropleth";
 import GraphComponent from "../views/visualization/GraphComponent";
 import { expenditure_data } from "../../data/expenditure_data";
+import ReportView from "../views/reportview/ReportView";
 
 const exp_data = expenditure_data;
 class AppController extends React.Component {
@@ -20,6 +21,7 @@ class AppController extends React.Component {
     }
 
     componentWillMount() {
+        /*
         const indicator_data = this.state.figData.find((sector) => {
                 return this.props.params.sector == sector.slugSector;
             }).subIndicators.find((indicator) => {
@@ -30,9 +32,11 @@ class AppController extends React.Component {
         }).sector;
 
         this.setState({indicatorData:indicator_data, sectorName:sector_name, sectorSelected:this.props.params.sector});
+    */
     }
 
     componentDidUpdate(prevProps, prevState) {
+        /*
         const indicator_data = this.state.figData.find((sector) => {
                 return this.props.params.sector == sector.slugSector;
             }).subIndicators.find((indicator) => {
@@ -44,7 +48,8 @@ class AppController extends React.Component {
         
         if(prevState.indicatorData != indicator_data){
             this.setState({indicatorData:indicator_data, sectorName:sector_name, sectorSelected:this.props.params.sector});
-        }
+        }\
+        */
     }
 
     handleChange(value){
@@ -59,14 +64,7 @@ class AppController extends React.Component {
         return ( 
             <div>
                 <div className = "col-lg-10" >
-                    <div id = "vis-container" >
-                    {
-                        this.state.viewBy == "choropleth" ? ( 
-                            <Choropleth data={this.state.indicatorData} attrType={this.state.budgetAttr} selectedIndicator={this.state.indicatorData.indicator} selectedSector = {this.state.sectorSelected} sectorName= {this.state.sectorName}/> ) 
-                        :(
-                            <GraphComponent data={this.state.indicatorData} attrType={this.state.budgetAttr} selectedIndicator={this.state.indicatorData.indicator} selectedSector = {this.state.sectorSelected} sectorName= {this.state.sectorName} /> )
-                    }
-                    </div>
+                    <ReportView />
                 </div>
                 <div className = "col-lg-2 rightsidebar" >
                     <RightSidebar viewByChange={this.handleChange} budgetAttrChange={this.onChangeBudgetAttr}/> 
