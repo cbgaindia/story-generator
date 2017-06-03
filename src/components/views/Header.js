@@ -6,13 +6,17 @@ import { IndexLink } from 'react-router';
 export const Header = ({ params }) => {
     const activeTheme = (params != undefined && params.theme != undefined) ? themes.filter(t => t.url_slug === params.theme).shift() : themes[0];
     return (
-        <div className='header'>
-            <div className="row-fluid">
-				<IndexLink to="/" className="story-generator-logo">
-                <h2 className="app-title"> Story Generator<sub className="alpha">ALPHA</sub> <hr className="title-hr" /></h2>
-                </IndexLink>
-			</div>
-            <Tabs themes={themes} titleSelector={theme => theme.description} activeTheme={activeTheme} />
+      <header>
+        <div className="row-fluid" style={{ marginBottom: '1em' }}>
+          <IndexLink to="/" className="story-generator-logo">
+            <div class="logo" style={{ textAlign: 'center' }}>
+              <img src="http://www.humanrightsinitiative.org/images/logo-orange.png" />
+            </div>
+          </IndexLink>
         </div>
+        <nav>
+          <Tabs themes={themes} titleSelector={theme => theme.description} activeTheme={activeTheme} />
+        </nav>
+      </header>
     );
 }
