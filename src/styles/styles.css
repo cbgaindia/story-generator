@@ -524,3 +524,8 @@
     .unit-text{
         text-align: right;
     }
+
+    #vis-container {
+    min-height: 450px;
+    border-bottom: 1px solid rgba(0, 0, 0, .3);
+}
