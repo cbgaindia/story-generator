@@ -7,7 +7,7 @@ class SelectionPanel extends React.Component{
 		return(
 		<div>
 			<div className ="row-fluid">
-				<TabsPanel />
+				<TabsPanel params={this.props.params} />
 			</div>
 		</div>
 		);

@@ -6,11 +6,8 @@ class LeftSidebar extends React.Component{
 	render(){
 		return(
 		<div>
-			<div className="row-fluid">
-				<IndexLink to="/" className="story-generator-logo"> <h2 className="app-title"> Story Generator<sub className="alpha">ALPHA</sub> <hr className="title-hr" /></h2></IndexLink>
-			</div>
 			<div className="select-panel row-fluid">
-				<SelectionPanel />
+				<SelectionPanel params={this.props.params} />
 			</div>
 			{/*<div className="social-icons-wrapper row-fluid">
 				<ShareIcons />
