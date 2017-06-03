@@ -1,11 +1,8 @@
 {
-  "presets": [
-    "react",
-    "es2015"
-  ],
-  "plugins": [
-    "transform-object-rest-spread",
-    "transform-es2015-modules-commonjs",
-    "transform-react-constant-elements"
-  ]
+  "presets": ["react", "es2015"],
+  "env": {
+    "development": {
+      "presets": ["react-hmre"]
+    }
+  }
 }

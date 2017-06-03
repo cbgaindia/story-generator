@@ -1,6 +1,0 @@
---require should
---reporter spec
---recursive
---ui bdd
---timeout 2000
-
