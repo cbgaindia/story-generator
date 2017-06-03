@@ -29,7 +29,6 @@ const SubThemeList = ({ subThemes, params }) => {
         </div>
       </div>)
     }
-  
   </div>
   );
 };
