@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import LeftSidebar from "./views/leftsidebar/LeftSidebar";
 import { Header } from './views/Header';
-import { Description } from './views/Description';
+import { Description, SubThemeDescription } from './views/Description';
 
 class App extends React.Component {
 	render() {
@@ -20,6 +20,7 @@ class App extends React.Component {
 							</div>
 							<div className="col-lg-9 full-height view-container ">
 								<div className="container-fluid ">
+									<SubThemeDescription theme={this.props.params.theme} sub_theme={this.props.params.sub_theme} />
 									<Description topic={this.props.params.topic} />
 									{this.props.children}
 								</div>
