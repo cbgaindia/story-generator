@@ -4,7 +4,7 @@ import domtoimage from 'dom-to-image';
 
 function filter (node) {
 	try {
-		return (node.getAttribute("class") !== 'statetooltip' && node.getAttribute("class")!== "tcontainer" && node.getAttribute("class")!== "select-container" && node.nodeType !=8 && node.getAttribute("class") !="know-more-link");
+		return (node.getAttribute("class") !== 'statetooltip' && node.getAttribute("class")!== "tcontainer" && node.getAttribute("class")!== "select-container" && node.nodeType !=8 && node.getAttribute("class") !="see-details-text");
 	}
 	catch(err) {
 		return true;
@@ -37,11 +37,10 @@ class RightSidebar extends React.Component{
 	}  
 	
 	downloadImage(){
-		domtoimage.toBlob(document.getElementById('card-container'), {filter: filter})
+		domtoimage.toBlob(document.getElementById('report-container'), {filter: filter})
 		.then(blob => {
-		window.saveAs(blob, 'visualization-report.png');
+		window.saveAs(blob, 'Visualization Report.png');
 		}).catch(function (error) {
-			console.error("Promise Rejected", error);
 		});
     }
 
@@ -64,9 +63,9 @@ class RightSidebar extends React.Component{
 						<span className="budget-attr-span rightsidebar-titles"><b>Budget Attributes :</b></span>
 					</div>			
 					<div className="btn-group button-grps btn-group-vertical" data-toggle="buttons">
-						<button type="button" value="BE" className={this.state.budgetAttribute==="BE" ? "btn btn-default focus active" : "btn btn-default"}  onClick ={this.handleBudgetAttrChange}> Budget Estimates</button>
-						<button type="button" value="RE" className={this.state.budgetAttribute==="RE" ? "btn btn-default focus active" : "btn btn-default"} onClick ={this.handleBudgetAttrChange}>Revised Estimates</button>
-						<button type="button" value="A" className={this.state.budgetAttribute==="A" ? "btn btn-default focus active" : "btn btn-default"}  onClick ={this.handleBudgetAttrChange}>Actuals</button>
+						<button type="button" value="BE" className={this.state.budgetAttribute==="BE" ? "btn btn-default focus active" : "btn btn-default"}  onClick ={this.handleBudgetAttrChange} > Budget Estimates</button>
+						<button type="button" value="RE" className={this.state.budgetAttribute==="RE" ? "btn btn-default focus active" : "btn btn-default"} onClick ={this.handleBudgetAttrChange} >Revised Estimates</button>
+						<button type="button" value="A" className={this.state.budgetAttribute==="A" ? "btn btn-default focus active" : "btn btn-default"}  onClick ={this.handleBudgetAttrChange} >Actuals</button>
 					</div>
 				</div>
 				<div className="row misc-buttons-wrapper">
