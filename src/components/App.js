@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import LeftSidebar from "./views/leftsidebar/LeftSidebar";
 import {appComponents} from "./ConfigMap";
+import AppController from "./controller/AppController";
 
 class App extends React.Component {
 	render(){		
