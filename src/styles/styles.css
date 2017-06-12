@@ -10,20 +10,6 @@
         margin-left: 0px!important;
     }
     
-    #app,
-    .app-wrapper,
-    .leftsidebar {}
-    
-    .nav-tabs.nav-justified>.active>a {
-        border: 1px solid rgba(0, 0, 0, 0.19);
-    }
-    
-    .leftsidebar {
-        padding: 0px 25px !important;
-        min-height: 100vh;
-        background: #F5F6F8 url(bg.png);
-    }
-    
     .full-height {
         height: 100%;
     }
@@ -33,24 +19,8 @@
         border-radius: 3px !important;
     }
     
-    .search-wrapper {
-        width: 100%;
-        padding-bottom: 15px;
-    }
-    
     .icons-wrapper i.fa {
         padding: 0px 0px 15px 12px;
-    }
-    
-    .share-icon-span,
-    .icons-wrapper {
-        float: left;
-    }
-    
-    .share-icon-span {
-        margin-left: 25px;
-        font-size: 18px;
-        padding-top: 2px;
     }
     
     .nav-stacked>li {
@@ -66,52 +36,11 @@
         width: 150px;
     }
     
-    nav.navbar.top-bar.navbar-inverse {
-        margin-bottom: 0px;
-        border-radius: 0px;
-    }
-    
     .view-container {
-        /*  background: rgba(220, 221, 219, 0.1) url(bg.png);
-  background:rgba(42, 87, 105, 0.9) url("bg.png");*/
         padding: 25px 0px 0px 0px;
         min-height: 100vh;
-        background: rgba(17, 51, 77, 0.01);
+        background: rgba(226, 225, 224, 0.48) url("bg.png");
         border-left: 1px solid rgba(128, 128, 128, 0.34);
-    }
-    
-    #vis-container {}
-    
-    .leaflet-container {
-        height: inherit;
-        width: inherit;
-        margin: 0 auto;
-    }
-    
-    .select-panel {
-        overflow: hidden;
-        margin-bottom: 0px;
-    }
-    
-    .timeline {
-        margin: 20px 0;
-        padding: 0;
-        border-top: 2px solid #428bca;
-        list-style: none;
-    }
-    
-    .tcontainer {
-        position: absolute;
-        top: 25px;
-        right: 25px;
-        height: 10em;
-        z-index: 1600;
-        color: black;
-        font-size: .5em;
-        display: block;
-        height: 67px;
-        text-align: center;
-        line-height: 30px;
     }
     
     a,
@@ -132,36 +61,8 @@
         outline: none;
     }
     
-    .vis-wrapper {
-        height: 430px;
-    }
-    
-    .selected-params {
-        /*   margin-left: 100px!important;*/
-        padding: 0px 0px 0px 20px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.30);
-    }
-    
     .card-box-shadow {
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.19), 0 1px 3px rgba(0, 0, 0, 0.23);
-    }
-    
-    .title-hr {
-        width: 90%;
-        border-color: black;
-        border: 0;
-        height: 1px;
-        background: #333;
-        background-image: linear-gradient(to right, #ccc, #333, #ccc);
-    }
-    
-    .indicator-description {
-        padding: 15px;
-        border-top: 1px solid rgba(0, 0, 0, 0.31);
-    }
-    
-    h5.figures-unit {
-        font-weight: bold;
     }
     
     .rightsidebar {
@@ -177,130 +78,9 @@
         margin-bottom: 20px;
     }
     
-    .statetoolPanelHeading {
-        height: 30px;
-        font-size: 12px;
-        font-weight: bold;
-        background-color: rgba(204, 204, 204, 0.7);
-    }
-    
-    .statetooltip {
-        position: absolute;
-        bottom: 2em;
-        right: 2em;
-        z-index: 10006;
-        color: black;
-        padding: .5em .75em;
-        font-size: 1em;
-        display: block;
-        width: 230px;
-        height: 75px;
-        background-color: rgba(233, 234, 229, 0.9);
-        text-align: center;
-        line-height: 30px;
-        display: block;
-    }
-    /*Graph Styles */
-    
-    .graph-container {
-        min-height: 430px;
-        padding: 15px 0px;
-        padding-bottom: 0px;
-    }
-    
-    .add-state-text {
-        padding-left: 50px;
-    }
-    
-    .state-select {
-        padding-top: 3px;
-    }
-    
-    .rv-xy-plot {
-        margin: 0px auto;
-    }
-    
-    .rv-discrete-color-legend.horizontal {
-        text-align: center;
-    }
-    
-    .row.legend-row {
-        margin-top: 15px;
-    }
-    
-    .rv-discrete-color-legend-item__color {
-        height: 14px;
-    }
-    
-    .select-placeholder {
-        padding-top: 25px
-    }
-    
     .row {
         margin-left: 15px;
         margin-right: 15px;
-    }
-    /* Legend */
-    
-    .legend-scale ul {
-        margin: 0;
-        padding: 0;
-        float: left;
-        list-style: none;
-    }
-    
-    .legend-scale ul li {
-        display: block;
-        width: 130px;
-        border-radius: 3px;
-        border: 1px solid rgba(128, 128, 128, 0.66);
-        margin-bottom: 3px;
-        text-align: center;
-        list-style: none;
-        padding: 0 0 0px 0;
-    }
-    
-    .legendspan {
-        display: block;
-        float: left;
-        height: 20px;
-        border-radius: 3px;
-        width: 40px;
-    }
-    
-    .legendspanside {
-        background-color: white;
-        display: block;
-        height: 22px;
-        padding-top: 2px;
-    }
-    
-    .legendcontainer {
-        position: absolute;
-        padding: 5px;
-        background: white;
-        border: 1px solid #cccccc;
-        bottom: 2em;
-        border-radius: 4px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);
-        left: 2em;
-        font-weight: 700;
-        display: block;
-        z-index: 180000;
-    }
-    
-    .legend {
-        display: block;
-        width: 100%;
-        font-size: 1.5em;
-        line-height: inherit;
-        color: black;
-        border: 0;
-        border-bottom: 1px solid black;
-    }
-    
-    .legend-labels {
-        font-size: 0.95em
     }
     
     .row.row-sub-text {
@@ -335,10 +115,6 @@
         padding-bottom: 20px;
     }
     
-
-    
-    
-    
     span.close-icon {
         float: right;
         border-radius: 4px;
@@ -356,18 +132,8 @@
         color: white;
     }
     
-    a.close-link,
-    .know-more-text {
-        cursor: pointer;
-    }
-    
     i.fa.fa-download.fa-lg {
         padding-right: 6px;
-    }
-    
-    .concordance-container .panel-heading {
-        font-weight: 700;
-        font-size: 18px;
     }
     /*  Home Component */
     
@@ -379,7 +145,56 @@
         font-weight: bold;
         margin: 0px;
     }
+    
+    .contributor_org_wrapper img {
+        margin: 0px 20px;
+    }
+    
+    .col-lg-12.contributor_org_wrapper {
+        margin: 20px 0px;
+    }
+    
+    @media screen and (min-width: 768px) {
+        .jumbotron {
+            padding-top: 18px;
+            padding-bottom: 48px;
+        }
+    }
+
+    .home-header-wrapper h1 {
+        font-size: 50px;
+    }
+
+    p.home-description {
+    font-weight: 100;
+    font-size: 20px;
+    font-family: "Open Sans" , sans-serif;
+}
     /* LeftSideBar */
+    
+    nav.navbar.top-bar.navbar-inverse {
+        margin-bottom: 0px;
+        border-radius: 0px;
+    }
+    .leftsidebar-bottom-logos a {
+    margin: 15px 5px;
+}
+
+    
+    .title-hr {
+        width: 90%;
+        border-color: black;
+        border: 0;
+        height: 1px;
+        background: #333;
+        background-image: linear-gradient(to right, #ccc, #333, #ccc);
+    }
+    
+    .leftsidebar {
+        padding: 0px 25px !important;
+        min-height: 100vh;
+        background: #FFF;
+    }
     
     .app-title {
         text-align: center;
@@ -474,14 +289,24 @@
         display: block;
         margin-bottom: -1px;
     }
+    
+    .nav-tabs > li > a {
+        background: gainsboro;
+    }
+    
+    .nav-tabs.nav-justified>.active>a {
+        border: 1px solid rgba(0, 0, 0, 0.19);
+        font-weight: bolder;
+    }
     /* ReportView Component  */
     
     #report-container {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
         border-radius: 5px;
         /* padding: 10px 50px 50px 50px; */
         margin-right: 10px;
         position: relative;
-        border: 2px solid #cccccc;
+        border: 1px solid rgba(0, 0, 0, 0.36);
         background: white;
         width: 97%;
         min-height: 500px;
@@ -493,12 +318,13 @@
         border-bottom: 1px solid rgba(0, 0, 0, .3);
     }
     
-    .primary-header{
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 0;
-    margin-top: 15px;
-}
+    .primary-header {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 0;
+        margin-top: 15px;
+    }
+    
     .col-lg-2.see-details-text {
         margin-top: 20px;
         font-weight: 700;
@@ -520,12 +346,206 @@
     .addtional-details h5 {
         font-weight: bold;
     }
-
-    .unit-text{
+    
+    .unit-text {
         text-align: right;
     }
-
+    
     #vis-container {
-    min-height: 450px;
-    border-bottom: 1px solid rgba(0, 0, 0, .3);
-}
+        min-height: 430px;
+        border-bottom: 1px solid rgba(0, 0, 0, .3);
+    }
+    
+    div#addtional-notes {
+        padding: 15px 20px;
+        text-align: justify;
+    }
+    
+    .additional-details {
+        height: 430px;
+    }
+    
+    a.close-link,
+    .see-details-text {
+        cursor: pointer;
+    }
+    
+    .additional-details-container .panel-heading {
+        font-weight: 700;
+        font-size: 18px;
+    }
+    /* Home Page */
+    
+    .jumbotron.text-center.intro-wrapper {
+        background: white;
+    }
+    /* Legend */
+    
+    .legend-scale ul {
+        margin: 0;
+        padding: 0;
+        float: left;
+        list-style: none;
+    }
+    
+    .legend-scale ul li {
+        display: block;
+        width: 130px;
+        border-radius: 3px;
+        border: 1px solid rgba(128, 128, 128, 0.66);
+        margin-bottom: 3px;
+        text-align: center;
+        list-style: none;
+        padding: 0 0 0px 0;
+    }
+    
+    .legendspan {
+        display: block;
+        float: left;
+        height: 20px;
+        border-radius: 3px;
+        width: 40px;
+    }
+    
+    .legendspanside {
+        background-color: white;
+        display: block;
+        height: 22px;
+        padding-top: 2px;
+    }
+    
+    .legendcontainer {
+        position: absolute;
+        padding: 5px;
+        background: white;
+        border: 1px solid #cccccc;
+        bottom: 2em;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);
+        left: 2em;
+        font-weight: 700;
+        display: block;
+        z-index: 180000;
+    }
+    
+    .legend {
+        display: block;
+        width: 100%;
+        font-size: 1.5em;
+        line-height: inherit;
+        color: black;
+        border: 0;
+        border-bottom: 1px solid black;
+    }
+    
+    .legend-labels {
+        font-size: 0.95em
+    }
+    /* Tooltip  */
+    
+    .statetoolPanelHeading {
+        height: 30px;
+        font-size: 12px;
+        font-weight: bold;
+        background-color: rgba(204, 204, 204, 0.7);
+    }
+    
+    .statetooltip {
+        position: absolute;
+        bottom: 2em;
+        right: 2em;
+        z-index: 10006;
+        color: black;
+        padding: .5em .75em;
+        font-size: 1em;
+        display: block;
+        width: 230px;
+        height: 75px;
+        background-color: rgba(233, 234, 229, 0.9);
+        text-align: center;
+        line-height: 30px;
+        display: block;
+    }
+    /*Graph Styles */
+    
+    .graph-container {
+        min-height: 430px;
+        padding: 15px 0px;
+        padding-bottom: 0px;
+    }
+    
+    .add-state-text {
+        padding-left: 50px;
+    }
+    
+    .state-select {
+        padding-top: 3px;
+    }
+    
+    .rv-xy-plot {
+        margin: 0px auto;
+    }
+    
+    .rv-discrete-color-legend.horizontal {
+        text-align: center;
+    }
+    
+    .row.legend-row {
+        margin-top: 15px;
+    }
+    
+    .rv-discrete-color-legend-item__color {
+        height: 14px;
+    }
+    
+    .select-placeholder {
+        padding-top: 25px
+    }
+    /* Choropleth */
+    
+    .select-panel {
+        overflow: hidden;
+        margin-bottom: 0px;
+    }
+    
+    .leaflet-container {
+        height: inherit;
+        width: inherit;
+        margin: 0 auto;
+    }
+    
+    .vis-wrapper {
+        height: 430px;
+    }
+    
+    .timeline {
+        margin: 20px 0;
+        padding: 0;
+        border-top: 2px solid #428bca;
+        list-style: none;
+    }
+    
+    .tcontainer {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        height: 10em;
+        z-index: 1600;
+        color: black;
+        font-size: .5em;
+        display: block;
+        height: 67px;
+        text-align: center;
+        line-height: 30px;
+    }
+    
+    .license-text {
+        z-index: 1000;
+        left: 0px;
+        padding: 0px 5px;
+        font-size: 11px;
+        /* background: rgba(255, 255, 255, 0.63); */
+        bottom: 0px;
+        background: rgba(255, 255, 255, 0.7);
+        position: absolute;
+    }
