@@ -160,26 +160,26 @@
             padding-bottom: 48px;
         }
     }
-
+    
     .home-header-wrapper h1 {
         font-size: 50px;
     }
-
+    
     p.home-description {
-    font-weight: 100;
-    font-size: 20px;
-    font-family: "Open Sans" , sans-serif;
-}
+        font-weight: 100;
+        font-size: 20px;
+        font-family: "Open Sans", sans-serif;
+    }
     /* LeftSideBar */
     
     nav.navbar.top-bar.navbar-inverse {
         margin-bottom: 0px;
         border-radius: 0px;
     }
+    
     .leftsidebar-bottom-logos a {
-    margin: 15px 5px;
-}
-
+        margin: 15px 5px;
+    }
     
     .title-hr {
         width: 90%;
@@ -515,7 +515,7 @@
     }
     
     .vis-wrapper {
-        height: 430px;
+        min-height: 430px;
     }
     
     .timeline {
@@ -523,6 +523,18 @@
         padding: 0;
         border-top: 2px solid #428bca;
         list-style: none;
+    }
+    
+    .select-placeholder {
+        padding-top: 25px;
+        font-family: "Open Sans", sans-serif;
+        font-weight: 300;
+    }
+    
+    .select-placeholder .jumbotron {
+        min-height: 320px;
+        padding-top: 100px;
+        vertical-align: middle;
     }
     
     .tcontainer {
@@ -548,4 +560,8 @@
         bottom: 0px;
         background: rgba(255, 255, 255, 0.7);
         position: absolute;
+    }
+    
+    .leaflet-container {
+        min-height: 430px;
     }
