@@ -8,7 +8,7 @@ import IndexComponent from "./components/views/home/Home";
 export default(
 <Route path="/" components={App}>
 	<IndexRoute components={IndexComponent} />
-	<Route path="/expenditure/:category/:record" component={AppController}  />
-	<Route path="/receipts/:record" component={AppController}  />
+	<Route path="/expenditure/:heirarchy_level/:category/:record" component={AppController}  panelName = {"expenditure"} />
+	<Route path="/receipts/:heirarchy_level/:record" component={AppController}  panelName = {"receipts"}/>
 </Route>
 );

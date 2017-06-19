@@ -15,137 +15,94 @@ import {
 } from 'react-vis';
 
 import "../../../../node_modules/react-vis/dist/style.css";
-import { expenditure_metadata } from "../../../data/expenditure_data_metadata";
-import { concordance_data } from "../../../data/concordance_data";
+
 
 const {LEFT, RIGHT, TOP, BOTTOM_EDGE, RIGHT_EDGE, TOP_EDGE} =
   Hint.ALIGN;
 
 class GraphComponent extends React.Component {
-  constructor(){
-    super();
-    this.state = {
-      value : [],
-      selectedAttr:null,
-      selectedFigures:null,
-      stateOptions:null,
-      hoverValue:null,
-      indicatorUnit:null,
-      notesText:null,
-      vizActive:true,
-      concordanceData:null  
-    };
+    constructor(){
+      super();
+      this.state = {
+        value : [],
+        budgetAttr:null,
+        selectedFigures:null,
+        stateOptions:null,
+        hoverValue:null,
+        indicatorUnit:null,
+        notesText:null,
+        vizActive:true,
+        concordanceData:null  
+      };
 
-    this.handleSelectChange = this.handleSelectChange.bind(this);
-    this.getStateFigures = this.getStateFigures.bind(this);
-    this.updateNotes = this.updateNotes.bind(this);
-    this.onBarHover =this.onBarHover.bind(this);
-    this.outBarHover = this.outBarHover.bind(this);
-    this.showConcordanceData = this.showConcordanceData.bind(this);
-    this.updateConcordanceData = this.updateConcordanceData.bind(this);
-  }
-
-  componentWillMount(){
-    this.updateNotes();
-    this.updateConcordanceData();
-  }
-
-  componentDidMount(){
-    this.setState({selectedAttr:this.props.attrType,indicatorUnit:this.props.data.unit});
-    this.getStateFigures();   
-  }
-
-  componentDidUpdate(prevProps, prevState){
-    if (this.state.selectedAttr != this.props.attrType){
-      this.setState({selectedAttr:this.props.attrType});
+      this.handleSelectChange = this.handleSelectChange.bind(this);
+      this.getrecord_figures = this.getrecord_figures.bind(this);
+      this.onBarHover =this.onBarHover.bind(this);
+      this.outBarHover = this.outBarHover.bind(this);
+      this.setBudgetAttr = this.setBudgetAttr.bind(this);
     }
-    if(this.state.indicatorUnit != this.props.data.unit){
-      this.setState({indicatorUnit:this.props.data.unit});
-    }
-    if(prevState.value != this.state.value || prevState.selectedAttr != this.state.selectedAttr || prevProps.data !=this.props.data ){
-      if(this.state.value.length != 0){
-      let stateArray = this.state.value.split(",");
-      let selectedFigures = [];
 
-      for(let selectedState in stateArray){
-        selectedFigures.push(this.props.data.stateFigures.find(function(value, index) {
-        if(value.state == stateArray[selectedState]){
-          return value.state;
-           } 
+    componentWillMount(){
+      this.getrecord_figures();   
+    }
+
+    componentDidUpdate(prevProps, prevState){    
+      if (this.state.budgetAttr != this.props.budgetAttr){
+        this.setState({budgetAttr:this.props.budgetAttr});
+      }
+
+      if(prevState.value != this.state.value || prevState.budgetAttr != this.props.budgetAttr || prevProps.data != this.props.data ){
+          if(this.state.value.length != 0){
+          let stateArray = this.state.value.split(",");
+          let selectedFigures = [];
+          for(let selectedState in stateArray){
+            selectedFigures.push(this.props.data.record_figures.find(function(value, index) {
+            if(value.grpby_name == stateArray[selectedState]){
+              return value.grpby_name;
+               } 
+             }
+            ));
+          }
+          
+          let currentState = this.state;
+          let mungedFigures = [];
+          selectedFigures.map(function(value, index){
+            let tempState = {};
+            tempState.name = value.grpby_name;
+            tempState.figures = [];
+            value.figures[currentState.budgetAttr].map(function(figure, index){
+              let tempFigure = {};
+              tempFigure.x = Object.keys(figure)[0];
+              tempFigure.y = parseFloat(figure[Object.keys(figure)[0]]);
+              tempFigure.grpby_name = value.grpby_name;
+              tempState.figures.push(tempFigure);
+            });
+            mungedFigures.push(tempState);
+          });
+          
+          if(this.state.value[0] == null && prevState.value != null){
+            this.setState({selectedFigures:null});
+          }
+          else{
+          this.setState({selectedFigures:mungedFigures});
          }
-        ));
-      }
-      let currentState = this.state;
-      let mungedFigures = [];
-      selectedFigures.map(function(value, index){
-        let tempState = {};
-        tempState.name = value.state;
-        tempState.figures = [];
-      
-        value.figures[currentState.selectedAttr].map(function(figure, index){
-          let tempFigure = {};
-          tempFigure.x = Object.keys(figure)[0];
-          tempFigure.y = parseFloat(figure[Object.keys(figure)[0]]);
-          tempFigure.state = value.state;
-          tempState.figures.push(tempFigure);
-        });
-
-        mungedFigures.push(tempState);
-      });
-      
-      if(this.state.value[0] == null && prevState.value != null){
-        this.setState({selectedFigures:null});
-      }
-      else{
-      this.setState({selectedFigures:mungedFigures});
-     }
-    }
-  }
-   
-    if(prevProps.selectedSector != this.props.selectedSector){
-      this.updateConcordanceData();
-    }
-
-    if(prevProps.selectedSector != this.props.selectedSector || prevProps.data.slugIndicator != this.props.data.slugIndicator){
-          this.updateNotes();
-    }
-  }
-
-
-  updateNotes(){
-      let self = this;
-      let description = expenditure_metadata.find(function(record, index){
-        if(record.slugSector == self.props.selectedSector && record.slugIndicator == self.props.data.slugIndicator){
-          return record;
         }
-      });
-      this.setState({notesText :description});
-    }
-
-  updateConcordanceData(){
-    let selected_sector = this.props.selectedSector;
-    let sector_notes = concordance_data.find(function(sector){
-      if(sector.slugSector == selected_sector){
-        return sector;
       }
-    });
-    this.setState({concordanceData : sector_notes});
-  }
-
-  showConcordanceData(){
-    this.setState({vizActive:this.state.vizActive? false : true});
-  }
-
-  getStateFigures(){
-    let statesData = [];
-    for(let state in this.props.data.stateFigures){
-      let temp = {};
-      temp.value = this.props.data.stateFigures[state].state;
-      temp.label = this.props.data.stateFigures[state].state;
-      statesData.push(temp);
     }
-    this.setState({stateOptions:statesData});
-  }
+    setBudgetAttr(){
+      this.setState({budgetAttr:this.props.budgetAttr});
+    }
+
+    getrecord_figures(){
+      let statesData = [];
+      for(let state in this.props.data.record_figures){
+        let temp = {};
+        temp.value = this.props.data.record_figures[state].grpby_name;
+        temp.label = this.props.data.record_figures[state].grpby_name;
+        statesData.push(temp);
+      }
+      this.setState({stateOptions:statesData});
+    }
 
     onBarHover(d, info){
       this.setState({hoverValue:d});
@@ -163,44 +120,8 @@ render (){
     let accessthis =this;
     const attributeKey = {"BE":" Budget Estimates", "RE":"Revised Estimates", "A":"Actuals"};
     const color = ['#26393D','#40627C','#D0A825','#D64700','#002A4A','#A7A37E','#B9121B','#1B1E26'].reverse();
-  
     return(
-      <div id="card-container">
-        <div className="row selected-params">
-          <div className="row">
-            <div className="col-lg-10 indicator-title-wrapper">
-              <h3 className="indicator-title">{this.props.selectedIndicator} 
-            </h3>
-            </div>
-            <div className="col-lg-2 know-more-text">
-              <a className= "know-more-link" onClick={this.showConcordanceData}>Know More</a>     
-            </div>
-            
-          </div>
-
-          <div className="row">
-            <div className="col-lg-8 sub-text">
-              <h4 className="sector-title">
-                {this.props.sectorName}
-              </h4>
-            </div>
-          
-          </div>  
-          <div className="row row-sub-text">
-            <div className="col-lg-8 sub-text">
-              <h5 className="budgetattr-year">
-                {attributeKey[this.state.selectedAttr]}
-              </h5>      
-            </div>
-            <div className="col-lg-4 sub-text">
-              <h5 className="figures-unit">Unit : Figures in {this.state.indicatorUnit}</h5>
-            </div>
-          </div>
-        </div> 
-     <div className="vis-wrapper" style={this.state.vizActive?{"overflow-y":"hidden"}:{"overflow-y":"scroll"}}>
-     {
-      this.state.vizActive?
-      (
+     <div className="vis-wrapper">
         <div className="container-fluid graph-container">
           <div className="row">
             <div className="select-container">
@@ -209,6 +130,7 @@ render (){
               </div>
             </div>
           </div>
+
           {this.state.value[0] != null && this.state.selectedFigures !=null ? 
             (<div className="row legend-row">
               <DiscreteColorLegend
@@ -254,7 +176,7 @@ render (){
               (<Hint value={this.state.hoverValue}  >
                   <div className="rv-hint__content">
                     <div>
-                      <span className="rv-hint__title"> {this.state.hoverValue.state}</span>
+                      <span className="rv-hint__title"> {this.state.hoverValue.grpby_name}</span>
                       <br />
                       <span className="rv-hint__title">Fiscal Year : </span>
                       <span className="rv-hint__value">{this.state.hoverValue.x}</span>
@@ -279,51 +201,15 @@ render (){
           }
           </div>
          </div>
-      ):(
-          <div className="concordance-container">
-            <div className="panel panel-default">
-            
-              <div className="panel-heading"> Concordance Table <span className="close-icon"> <a className= "close-link" onClick={this.showConcordanceData}><i className="fa fa-times" aria-hidden="true"></i></a></span> </div>
-
-              <table className="table">
-                <thead> 
-                  <tr> 
-                    <th>States</th> 
-                    <th>Details of the Budget Document from which data have been recorded</th> 
-                  </tr> 
-                </thead>
-                <tbody>
-                  {
-                    this.state.concordanceData.state_value.map((state) => {
-                      return(
-                        <tr key={state.name}>
-                          <td>{state.name}</td>
-                          <td>{state.description}</td>
-                        </tr>);
-                    })
-                  }
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )
-     }   
-      
-       </div>
-       <div className="row indicator-description">
-        Source - {this.state.notesText.source}  
       </div>
-     </div>
-    );
+         );
   }
 }
 
+
 GraphComponent.propTypes = {
    data: React.PropTypes.object,
-   attrType:React.PropTypes.string,
-   selectedSector:React.PropTypes.string,
-   selectedIndicator:React.PropTypes.string,
-   sectorName:React.PropTypes.string
+   budgetAttr:React.PropTypes.string
 };
 
 export default GraphComponent;
