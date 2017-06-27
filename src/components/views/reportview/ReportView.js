@@ -37,6 +37,10 @@ return (
 							</tr>);
 							})
 					}
+					<tr key="notes">
+						<td>Notes</td>
+						<td>{this.props.additionalDetails.note}</td>
+					</tr>
 				</tbody>
 				</table>
 			</div>
