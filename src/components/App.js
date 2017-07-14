@@ -1,7 +1,6 @@
-import React, {PropTypes} from 'react';
+import React, {PropTypes} from "react";
 import LeftSidebar from "./views/leftsidebar/LeftSidebar";
 import {appComponents} from "./ConfigMap";
-import AppController from "./controller/AppController";
 
 class App extends React.Component {
 	render(){		
@@ -21,10 +20,7 @@ class App extends React.Component {
 				</div>
 				<div className="row hidden-lg">
 					<div className="col-lg-12">
-						<div className="jumbotron text-center">
-						 Apologies. <br />The App isnt Mobile or Tablet Friendly as of now!<br />
-						 We are in progress to make it work on the same. <br / > 
-						 Please use Laptop or a Desktop device to use the Story Generator
+						<div className="jumbotron text-center">Apologies. <br />The App isnt Mobile or Tablet Friendly as of now!<br />We are in progress to make it work on the same. <br />Please use Laptop or a Desktop device to use the Story Generator
 						</div>
 					</div>
 				</div>

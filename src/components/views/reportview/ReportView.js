@@ -119,12 +119,7 @@ render(){
 					<div className="col-lg-8">
 						<h5 className="addtional-details">
 							<span className="add-detail-1">
-							{this.props.viewBy!="barchart" ?(
-								this.props.selectedYear + " | "
-								):
-								(
-									null	)
-							}
+							{this.props.viewBy!="barchart" ?(this.props.selectedYear + " | "):(null)}
 							</span>
 							<span className="add-detail-2">
 								{attributeKey[this.props.budgetAttr]}
