@@ -1,7 +1,7 @@
 import React from 'react';
 import {homeComponent} from "../../ConfigMap" ; 
 
-const IndexComponent = () => {
+const Home = () => {
   return (
     <div className="col-lg-12">
 		<div className="jumbotron text-center intro-wrapper">
@@ -27,4 +27,4 @@ const IndexComponent = () => {
   );
 };
 
-export default IndexComponent;
+export default Home;

@@ -75,26 +75,25 @@ class AppController extends React.Component {
     }
 
     setRecordData(){
-        let currentState = this.state;
+        let currentState = this.state, recordData;
         if(this.props.params.heirarchy_level == 2 ){
-            let recordData = appController.dataseries.find(function(series){
+            recordData = appController.dataseries.find(function(series){
                 return series.title_slug == currentState.series;
                 }).data.find(function(category){
                     return category.category_slug == currentState.categorySlug;       
                     }).sub_records.find(function(record){
                         return record.record_slug == currentState.recordSlug;
                         });
-            this.setState({recordData:recordData});
         }
         else
         {
-            let recordData = appController.dataseries.find(function(series){
+            recordData = appController.dataseries.find(function(series){
                  return series.title_slug == currentState.series;
                     }).data.find(function(record){
                         return record.record_slug == currentState.recordSlug;
                             });
-            this.setState({recordData:recordData});
         }
+        this.setState({recordData:recordData});
     }
 
 

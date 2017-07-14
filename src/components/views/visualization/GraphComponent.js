@@ -126,7 +126,7 @@ render (){
           <div className="row">
             <div className="select-container">
               <div className="col-lg-12 state-select">
-                <Select multi={true} simpleValue value={this.state.value} placeholder="Select a State" options={this.state.stateOptions} onChange={this.handleSelectChange} />
+                <Select multi simpleValue value={this.state.value} placeholder="Select a State" options={this.state.stateOptions} onChange={this.handleSelectChange} />
               </div>
             </div>
           </div>
