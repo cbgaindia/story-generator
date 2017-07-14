@@ -2,6 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 
 import Tabs from './subComponents/Tabs';
+import PanelContent from './subComponents/PanelContent';
 
 class TabsPanel extends React.Component {
     constructor() {
