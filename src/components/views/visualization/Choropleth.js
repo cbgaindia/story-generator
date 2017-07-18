@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 
 import LegendStep from "./choropleth-helpers/LegendStep";
 import YearSelector from "./choropleth-helpers/YearSelector";
+import StateToolTip from "./choropleth-helpers/StateToolTip";
 
 let config = {};
 
