@@ -39,7 +39,7 @@
     .view-container {
         padding: 25px 0px 0px 0px;
         min-height: 100vh;
-        background: rgba(226, 225, 224, 0.48) url("bg.png");
+        background: rgba(226, 225, 224, 0.48) url("https://raw.githubusercontent.com/cbgaindia/portal-design/master/portal_pages/misc/bg.png");
         border-left: 1px solid rgba(128, 128, 128, 0.34);
     }
     
