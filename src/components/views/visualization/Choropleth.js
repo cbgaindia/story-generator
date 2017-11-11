@@ -10,6 +10,7 @@ import {
   TileLayer, GeoJSON
 } from 'react-leaflet';
 import 'bootstrap/dist/css/bootstrap.css';
+import * as topojson from "topojson-client";
 
 let config = {};
 
