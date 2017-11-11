@@ -148,10 +148,10 @@ render (){
             {this.state.value[0] != null && this.state.selectedFigures !=null? (
               <div id="chart">
                 <XYPlot
-                  width={600}
+                  width={650}
                   height={300} 
                   xType="ordinal"
-                  margin={{top:20, left:40, right:0, bottom:40}}>
+                  margin={{top:20, left:70, right:10, bottom:40}}>
                 <HorizontalGridLines />
                 
                 <VerticalGridLines />
