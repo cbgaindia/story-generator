@@ -5,7 +5,7 @@ export let expenditure_metadata = [
     "category_slug": "agriculture_allied_activities",
     "notes": "The data are compiled and aggregated from data of demand for grants documents. Thus, data compiled pertain to expenditure made through Dpartments/ Ministries of the respective States. These data may not, and usually should not match precisely with those of compiled as per Major Head ( major functions of the government).",
     "record": "Total Sector Expenditure",
-    "source": "Expenditure Data for the Sector have been compiled from from Detailed Demand for Grants documents of the respective departments of the State Budgets of concerned States. **Note:The expenditure data for 2013-14 is strictly not comparable with the later years because the Union Budget outlays for a number of Centrally Sponsored Schemes (CSS) used to get transferred directly to the implementing agencies without being routed through the State Budgets. Hence, the State Budget data till 2013-14 did not reflect the complete allocations, combining both the Central and States’ share, for these CSS. ",
+    "source": "Expenditure Data for the Sector have been compiled from from Detailed Demand for Grants documents of the respective departments of the State Budgets of concerned States. Note:The expenditure data for 2013-14 is strictly not comparable with the later years because the Union Budget outlays for a number of Centrally Sponsored Schemes (CSS) used to get transferred directly to the implementing agencies without being routed through the State Budgets. Hence, the State Budget data till 2013-14 did not reflect the complete allocations, combining both the Central and States’ share, for these CSS. ",
     "unit": "INR (in Crores)"
 },
 {
