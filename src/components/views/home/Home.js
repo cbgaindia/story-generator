@@ -22,13 +22,6 @@ const IndexComponent = () => {
 					})}
 				</div>
 			</div>
-			<div className="row">
-				<hr className="title-hr" />
-				<div className="disclaimer-text">
-					<span className="word-disclaimer">Disclaimer : </span>
-					With the merger of Plan and Non-Plan expenditure from the current budget cycle, the structure of many of the state budgets have undergone changes. To ensure comparability of the data points, we are in the process of validating our calculations and will be making the data for 2017-18 budget indicators available in the next few weeks. 
-				</div>
-			</div>
 		</div>
 	</div>
   );
