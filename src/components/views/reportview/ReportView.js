@@ -37,10 +37,6 @@ return (
 							</tr>);
 							})
 					}
-					<tr key="notes">
-						<td>Notes</td>
-						<td>{this.props.additionalDetails.note}</td>
-					</tr>
 				</tbody>
 				</table>
 			</div>
@@ -99,24 +95,24 @@ render(){
 		<div id="report-container">
 			<div id="header-container">
 				<div className="row">
-					<div className="col-lg-10">
+					<div className="col-md-10">
 						<h3 className="primary-header">
 							{this.props.recordName}
 						</h3>
 					</div>
-					<div className="col-lg-2 see-details-text">
+					<div className="col-md-2 see-details-text">
 						<a className="see-details-text" onClick={this.showAdditionalDetails}> <i className="fa fa-info-circle fa-lg" aria-hidden="true"></i> See Details</a>
 					</div>
 				</div>
 				<div className="row">
-					<div className="col-lg-8">
+					<div className="col-md-8">
 						<h4 className="secondary-header">
 							{this.props.category}
 						</h4>
 					</div>
 				</div>
 				<div className="row">
-					<div className="col-lg-8">
+					<div className="col-md-8">
 						<h5 className="addtional-details">
 							<span className="add-detail-1">
 							{this.props.viewBy!="barchart" ?(
@@ -131,7 +127,7 @@ render(){
 							</span>
 						</h5>
 					</div>
-					<div className="col-lg-4">
+					<div className="col-md-4">
 						<h5 className="unit-text addtional-details">Unit : Figures in {this.props.record.unit}</h5>
 					</div>
 				</div>

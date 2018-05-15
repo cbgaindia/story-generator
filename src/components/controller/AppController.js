@@ -175,7 +175,7 @@ class AppController extends React.Component {
     render() {
         return ( 
             <div>
-                <div className = "col-lg-10" >
+                <div className = "col-md-10" >
                     <ReportView heirarchyLevel={this.state.heirarchyLevel} 
                                 category={this.state.categoryName} 
                                 record={this.state.recordData} 
@@ -188,7 +188,7 @@ class AppController extends React.Component {
                                 additionalDetails={this.state.addtional_details}
                      />
                 </div>
-                <div className = "col-lg-2 rightsidebar" >
+                <div className = "col-md-2 rightsidebar" >
                     <RightSidebar viewByChange={this.handleChange} budgetAttrChange={this.onChangeBudgetAttr}/> 
                 </div>
             </div>
