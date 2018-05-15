@@ -75,6 +75,11 @@ class RightSidebar extends React.Component{
 					<div className="row">
 						<button type="button" value="download" className="btn btn-default" id="download_report" onClick ={this.downloadImage}> <i className="fa fa-download  fa-lg" aria-hidden="false"></i>  Download Report</button>
 					</div>
+					<div className="row">
+						<a href="https://openbudgetsindia.org/organization/sector-specific-state-budget-aggregates" target="_blank">
+							<button type="button" value="download-dataset" className="btn btn-default" id="download_dataset"> <i className="fa fa-table  fa-lg" aria-hidden="false"></i>  Download Dataset</button>
+						</a>
+					</div>
 				</div>
 			</div>
 			);
