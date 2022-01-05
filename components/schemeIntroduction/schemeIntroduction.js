@@ -35,7 +35,7 @@ export default function SchemeIntroduction(props) {
       <p className="scheme__bread">
         <Link href="/">
           <a className="scheme__home-link">
-            <u>Schemes Dashboard</u>
+            <u>Story Generator</u>
           </a>
         </Link>
         &nbsp;&nbsp; &gt;
@@ -60,7 +60,7 @@ export default function SchemeIntroduction(props) {
           </svg>
         </a>
       </div>
-      <p className="scheme__desc">{props.data.description}</p>
+      <p className="scheme__desc">{props.data.description ? props.data.description : props.data.notes}</p>
       <div className="scheme__meta">
         <p className="scheme__frequency">
           Frequency:{' '}

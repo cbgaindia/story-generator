@@ -19,7 +19,7 @@ export function generateSlug(slug) {
 
 export async function fetchQuery(query, value) {
   const queryRes = await fetch(
-    `https://openbudgetsindia.org/api/3/action/package_search?fq=${query}:"${value}"+organization:state-wise-schemes-data&rows=50`
+    `https://openbudgetsindia.org/api/3/action/package_search?fq=${query}:"${value}"+organization:sector-specific-state-budget-aggregates&rows=50`
   ).then((res) => res.json());
 
   return queryRes.result.results;
@@ -55,6 +55,7 @@ export async function dataTransform(id) {
   let type;
   let slug;
   let url;
+  let notes;
   await fetchQuery('slug', id).then((data) => {
     data[0].resources.forEach((file) => {
       if (file.url.includes('.xlsx')) url = file.url;
@@ -63,6 +64,7 @@ export async function dataTransform(id) {
     name = data[0].extras[0].value;
     type = data[0].extras[1].value;
     slug = data[0].name || '';
+    notes = data[0].notes || '';
   });
 
   await fetchSheets(url).then((res) => {
@@ -88,37 +90,37 @@ export async function dataTransform(id) {
       type: type || '',
       note: metaObj['note:'] || '',
       slug,
+      notes,
       indicators: [],
     };
 
     // Tabular Data
-    for (let i = 3; i < dataParse[0].length; i += 1) {
+    for (let i = 4; i < dataParse[0].length; i += 1) {
       const fiscal_year = {};
 
       for (let j = 1; j < dataParse.length; j += 1) {
-        if (dataParse[j][2]) {
-          fiscal_year[dataParse[j][2].trim()] = {
-            ...fiscal_year[dataParse[j][2].trim()],
-            [dataParse[j][1]]:
-              Math.round((dataParse[j][i] + Number.EPSILON) * 100) / 100 || '',
+        if (dataParse[j][3] && dataParse[j][2]) {
+                   fiscal_year[dataParse[j][3].trim()] = fiscal_year[dataParse[j][3].trim()] || {};
+                   fiscal_year[dataParse[j][3].trim()][dataParse[j][2].trim()] = fiscal_year[dataParse[j][3].trim()][dataParse[j][2].trim()] || {};
+                   fiscal_year[dataParse[j][3].trim()][dataParse[j][2].trim()][dataParse[j][1]] = Math.round((dataParse[j][i] + Number.EPSILON) * 100) / 100 || '';
           };
         }
-      }
+      
 
       const indicatorSlug =
-        generateSlug(metaObj[`indicator-${i - 2}-name`]) || '';
+        generateSlug(metaObj[`indicator-${i - 3}-name`]) || '';
 
       obj.metadata.indicators.push(indicatorSlug);
 
       obj.data = {
         ...obj.data,
-        [`indicator_0${i - 2}`]: {
+        [`indicator_0${i - 3}`]: {
           fiscal_year,
-          name: metaObj[`indicator-${i - 2}-name`] || '',
-          description: metaObj[`indicator-${i - 2}-description`] || '',
-          note: metaObj[`indicator-${i - 2}-note`] || '',
+          name: metaObj[`indicator-${i - 3}-name`] || '',
+          description: metaObj[`indicator-${i - 3}-description`] || '',
+          note: metaObj[`indicator-${i - 3}-note`] || '',
           slug: indicatorSlug,
-          unit: metaObj[`indicator-${i - 2}-unit`] || '',
+          unit: metaObj[`indicator-${i - 3}-unit`] || '',
         },
       };
     }

@@ -80,7 +80,7 @@ const SchemesDetailsView = (props) => {
                 budgetAttr="A"
                 unit={props.schemeData.data[props.activeIndicator].unit}
                 stateCodes={props.stateCodes}
-                schemeData={props.schemeData.data[props.activeIndicator]}
+                schemeData={{...props.schemeData.data[props.activeIndicator], fiscal_year: props.schemeData.data[props.activeIndicator].fiscal_year['Budget Estimates']}}
                 setYearChange={props.setYearChange}
               />
             ) : null}
@@ -88,15 +88,13 @@ const SchemesDetailsView = (props) => {
               <GraphComponent
                 budgetAttr="A"
                 stateCodes={props.stateCodes}
-                schemeData={
-                  props.schemeData.data[props.activeIndicator].fiscal_year
-                }
+                schemeData={{...props.schemeData.data[props.activeIndicator], fiscal_year: props.schemeData.data[props.activeIndicator].fiscal_year['Budget Estimates']}.fiscal_year}
               />
             ) : null}
             {props.showViz && props.activeViz === 'table' ? (
               <Table
                 stateCodes={props.stateCodes}
-                schemeData={props.schemeData.data[props.activeIndicator]}
+                schemeData={{...props.schemeData.data[props.activeIndicator], fiscal_year: props.schemeData.data[props.activeIndicator].fiscal_year['Budget Estimates']}}
               />
             ) : null}
           </div>

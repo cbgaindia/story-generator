@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Table = (props) => {
+  console.log(props.schemeData)
   const financialYears = Object.keys(props.schemeData.fiscal_year).reverse();
   const indicatorName = props.schemeData.name;
   return (

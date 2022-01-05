@@ -45,7 +45,7 @@ export default function Home({ cardsData }) {
 }
 
 export async function getStaticProps() {
-  const data = await fetchQuery('schemeType', 'Centrally Sponsored Scheme');
+  const data = await fetchQuery('schemeType', 'Sector Aggregate');
   return {
     props: {
       cardsData: data.map((scheme) => ({

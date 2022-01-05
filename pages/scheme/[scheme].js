@@ -61,6 +61,7 @@ const Scheme = ({ scheme, related, news }) => {
   const router = useRouter();
 
   useEffect(() => {
+
     // Setting current indicator
     let currentIndicator = Object.keys(scheme.data).find(
       (indicator) => scheme.data[indicator].slug === router.query.indicator
@@ -159,7 +160,6 @@ const Scheme = ({ scheme, related, news }) => {
                 )}
               </div>
 
-              <SchemeNews newsData={news} />
 
               <RelatedSchemes related={related} />
             </>
@@ -171,7 +171,7 @@ const Scheme = ({ scheme, related, news }) => {
 };
 
 export async function getStaticPaths() {
-  const data = await fetchQuery('schemeType', 'Centrally Sponsored Scheme');
+  const data = await fetchQuery('schemeType', 'Sector Aggregate');
   return {
     paths: data.map((scheme) => ({
       params: {
@@ -188,10 +188,9 @@ export async function getStaticProps({ params }) {
     scheme.metadata.name,
     scheme.metadata.type
   );
-  const news = await fetchNews(params.scheme);
 
   return {
-    props: { scheme, related, news },
+    props: { scheme, related},
     revalidate: 1,
   };
 }
