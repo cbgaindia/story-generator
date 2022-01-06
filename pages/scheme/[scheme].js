@@ -57,6 +57,7 @@ const Scheme = ({ scheme, related, news }) => {
   const [activeIndicator, setActiveIndicator] = useState('');
   const [activeYear, setActiveYear] = useState('2019-20');
   const [loading, setLoading] = useState(true);
+  const [estimate, setEstimate] = useState('Budget Estimates');
 
   const router = useRouter();
 
@@ -79,6 +80,12 @@ const Scheme = ({ scheme, related, news }) => {
   const handleToggleShowViz = (status) => {
     setShowViz(status);
   };
+
+  const handleChangeEst = (value) => {
+        console.log(value);
+	setEstimate(value);
+	};
+
   const setYearChange = (year) => {
     setActiveYear(year);
   };
@@ -136,6 +143,8 @@ const Scheme = ({ scheme, related, news }) => {
                 <DatavizViewControls
                   view={activeViz}
                   handleChangeViz={handleChangeViz}
+                  estimate={estimate}
+                  handleChangeEst={handleChangeEst}
                 />
                 {activeIndicator && (
                   <>
@@ -151,6 +160,7 @@ const Scheme = ({ scheme, related, news }) => {
                       activeViz={activeViz}
                       handleToggleShowViz={handleToggleShowViz}
                       schemeData={scheme}
+                      estimate={estimate}
                       activeIndicator={activeIndicator}
                       activeYear={activeYear}
                       stateCodes={stateCodes}

@@ -114,7 +114,16 @@ const radioButtons = [
 ];
 
 const DatavizViewControls = (props) => (
+
   <fieldset className="scheme__controls">
+
+      <div style={{alignSelf:'left'}}>
+		{(<button className="btn-geo-opt" style={props.estimate == 'Budget Estimates'? {background:'#672448', color:'white'} : {}} onClick={() => props.handleChangeEst('Budget Estimates')}>Budget Estimates</button>)}
+		{(<button className="btn-geo-opt" style={props.estimate == 'Revised Estimates'? {background:'#672448', color:'white'} : {}} onClick={() => props.handleChangeEst('Revised Estimates')}>Revised Estimates</button>)}
+		{(<button className="btn-geo-opt" style={props.estimate == 'Actuals'? {background:'#672448', color:'white'} : {}} onClick={() => props.handleChangeEst('Actuals')}>Actuals</button>)}
+      </div>
+
+
     <legend className="screen-reader-text">Select Viz type: </legend>
     {radioButtons.map((radio, index) => (
       <React.Fragment key={`dataviz-${index}`}>
@@ -134,6 +143,6 @@ const DatavizViewControls = (props) => (
         </label>
       </React.Fragment>
     ))}
-  </fieldset>
+ </fieldset>
 );
 export default DatavizViewControls;
