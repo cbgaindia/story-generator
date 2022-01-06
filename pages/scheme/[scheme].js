@@ -62,7 +62,6 @@ const Scheme = ({ scheme, related, news }) => {
   const router = useRouter();
 
   useEffect(() => {
-
     // Setting current indicator
     let currentIndicator = Object.keys(scheme.data).find(
       (indicator) => scheme.data[indicator].slug === router.query.indicator
@@ -82,9 +81,9 @@ const Scheme = ({ scheme, related, news }) => {
   };
 
   const handleChangeEst = (value) => {
-        console.log(value);
-	setEstimate(value);
-	};
+    console.log(value);
+    setEstimate(value);
+  };
 
   const setYearChange = (year) => {
     setActiveYear(year);
@@ -170,8 +169,7 @@ const Scheme = ({ scheme, related, news }) => {
                 )}
               </div>
 
-
-              <RelatedSchemes related={related} />
+              {related.length > 0 && <RelatedSchemes related={related} />}
             </>
           )}
         </div>
@@ -200,7 +198,7 @@ export async function getStaticProps({ params }) {
   );
 
   return {
-    props: { scheme, related},
+    props: { scheme, related },
     revalidate: 1,
   };
 }

@@ -1387,6 +1387,7 @@ button {
   display: grid;
   gap: 1.5rem;
   grid-template-columns: 300px minmax(0, 1fr);
+  margin-bottom: 4rem;
 }
 @media (max-width: 1024px) {
   .scheme__container {
@@ -1394,6 +1395,21 @@ button {
     grid-template-rows: repeat(3, -webkit-max-content);
     grid-template-rows: repeat(3, max-content);
   }
+}
+.scheme__container .dataVizControl {
+  grid-column: 1/3;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: center;
+}
+.scheme__container .dataVizControl button {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.8rem;
+  margin-right: 8px;
 }
 .scheme__viz {
   display: flex;
@@ -1410,4 +1426,4 @@ button {
   place-content: center;
   height: 90vh;
   text-align: center;
-}/*# sourceMappingURL=app.css.map */
+}

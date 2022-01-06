@@ -114,35 +114,69 @@ const radioButtons = [
 ];
 
 const DatavizViewControls = (props) => (
+  <div className="dataVizControl">
+    <div>
+      <button
+        className="btn-geo-opt"
+        type="button"
+        style={
+          props.estimate == 'Budget Estimates'
+            ? { background: '#672448', color: 'white' }
+            : {}
+        }
+        onClick={() => props.handleChangeEst('Budget Estimates')}
+      >
+        Budget Estimates
+      </button>
 
-  <fieldset className="scheme__controls">
+      <button
+        className="btn-geo-opt"
+        type="button"
+        style={
+          props.estimate == 'Revised Estimates'
+            ? { background: '#672448', color: 'white' }
+            : {}
+        }
+        onClick={() => props.handleChangeEst('Revised Estimates')}
+      >
+        Revised Estimates
+      </button>
 
-      <div style={{alignSelf:'left'}}>
-		{(<button className="btn-geo-opt" style={props.estimate == 'Budget Estimates'? {background:'#672448', color:'white'} : {}} onClick={() => props.handleChangeEst('Budget Estimates')}>Budget Estimates</button>)}
-		{(<button className="btn-geo-opt" style={props.estimate == 'Revised Estimates'? {background:'#672448', color:'white'} : {}} onClick={() => props.handleChangeEst('Revised Estimates')}>Revised Estimates</button>)}
-		{(<button className="btn-geo-opt" style={props.estimate == 'Actuals'? {background:'#672448', color:'white'} : {}} onClick={() => props.handleChangeEst('Actuals')}>Actuals</button>)}
-      </div>
+      <button
+        className="btn-geo-opt"
+        type="button"
+        style={
+          props.estimate == 'Actuals'
+            ? { background: '#672448', color: 'white' }
+            : {}
+        }
+        onClick={() => props.handleChangeEst('Actuals')}
+      >
+        Actuals
+      </button>
+    </div>
 
-
-    <legend className="screen-reader-text">Select Viz type: </legend>
-    {radioButtons.map((radio, index) => (
-      <React.Fragment key={`dataviz-${index}`}>
-        <input
-          className="screen-reader-text"
-          type="radio"
-          id={radio.val}
-          name="viz-types"
-          value={radio.val}
-          onChange={(e) => props.handleChangeViz(e.target.value)}
-          checked={radio.val === props.view}
-          readOnly
-        />
-        <label className={radio.class} htmlFor={radio.val}>
-          {radio.val === props.view ? radio.checkImage : radio.uncheckImage}
-          {radio.title}
-        </label>
-      </React.Fragment>
-    ))}
- </fieldset>
+    <fieldset className="scheme__controls">
+      <legend className="screen-reader-text">Select Viz type: </legend>
+      {radioButtons.map((radio, index) => (
+        <React.Fragment key={`dataviz-${index}`}>
+          <input
+            className="screen-reader-text"
+            type="radio"
+            id={radio.val}
+            name="viz-types"
+            value={radio.val}
+            onChange={(e) => props.handleChangeViz(e.target.value)}
+            checked={radio.val === props.view}
+            readOnly
+          />
+          <label className={radio.class} htmlFor={radio.val}>
+            {radio.val === props.view ? radio.checkImage : radio.uncheckImage}
+            {radio.title}
+          </label>
+        </React.Fragment>
+      ))}
+    </fieldset>
+  </div>
 );
 export default DatavizViewControls;

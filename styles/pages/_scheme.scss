@@ -17,10 +17,29 @@
 		display: grid;
 		gap: 1.5rem;
 		grid-template-columns: 300px minmax(0, 1fr);
+		margin-bottom: 4rem;
 
 		@include respond-to('lt-laptop') {
 			grid-template-columns: 1fr;
 			grid-template-rows: repeat(3, max-content);
+		}
+
+		.dataVizControl {
+			grid-column: 1/3;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 2rem;
+			justify-content: space-between;
+			align-items: center;
+
+			button {
+				background-color: #ffffff;
+				border-radius: 8px;
+				padding: 0.5rem 0.8rem;
+				font-size: 0.8rem;
+				margin-right: 8px;
+
+			}
 		}
 	}
 
