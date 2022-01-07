@@ -21,7 +21,7 @@ export default function Home({ cardsData }) {
   const seo = {
     url: 'https://schemes.openbudgetsindia.org/',
     description:
-      'Find downloadable data, visualisations and other useful information related to a number of schemes run by the Union and State Governments.',
+      'A tool that facilitates comparison of aggregate budget indicators across different states and years across twelve social and economic sectors.',
   };
 
   return (

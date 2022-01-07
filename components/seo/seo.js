@@ -6,7 +6,7 @@ const Seo = ({ seo }) => {
     : 'Story Generator | Open Budgets India';
   const description = seo.description
     ? seo.description
-    : 'Find downloadable data, visualisations and other useful information related to a number of schemes run by the Union and State GovernmentsFind downloadable data, visualisations and other useful information related to a number of schemes run by the Union and State Governments.';
+    : 'A tool that facilitates comparison of aggregate budget indicators across different states and years across twelve social and economic sectors.';
 
   const url = seo.url ? seo.url : 'https://schemes.openbudgetsindia.org/';
   return (
