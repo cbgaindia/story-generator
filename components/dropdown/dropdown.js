@@ -11,7 +11,8 @@ const Dropdown = (props) => (
       onChange={props.handleDropdownChange}
     >
       {props.options.map((option, index) => (
-        <option key={`dropdown-${index}`}>{option}</option>
+           <option key={`dropdown-${index}`} selected={option == props.selectedYear}>{option}</option>
+
       ))}
     </select>
   </>

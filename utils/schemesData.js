@@ -1,9 +1,9 @@
-import pmay from 'public/Images/schemesLogos/pmay.jpg';
+import health from 'public/Images/schemesLogos/health.png';
 
 
 const SchemesData = {
   health: {
-    logo: pmay,
+    logo: health,
   },
 };
 

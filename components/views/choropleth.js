@@ -474,6 +474,7 @@ class YearSelector extends Component {
 				options={fiscalList}
 				heading="Select Year"
 				handleDropdownChange={props.handleYearChange}
+                                selectedYear={props.selectedYear}
 			/>
 		)
 	}

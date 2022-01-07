@@ -82,6 +82,16 @@ export async function dataTransform(id) {
       }
     });
 
+    // capture data of states from metadata sheet in obj.metadata
+    let states = ['Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Delhi', 'Goa', 'Gujarat',
+             'Haryana', 'Himachal Pradesh', 'Jammu &Kashmir', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh', 'Maharashtra',
+             'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura', 
+             'Uttar Pradesh', 'Uttarakhand', 'West Bengal' ];
+    let states_meta = {}
+    for (const key of states) {
+	      states_meta[key] = metaObj[generateSlug(key)] || '';
+    }
+
     obj.metadata = {
       description: metaObj['scheme-description'] || '',
       name: name || '',
@@ -92,6 +102,7 @@ export async function dataTransform(id) {
       slug,
       notes,
       indicators: [],
+      states : states_meta,	
     };
 
     // Tabular Data
