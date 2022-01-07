@@ -2,8 +2,8 @@ import Head from 'next/head';
 
 const Seo = ({ seo }) => {
   const title = seo.title
-    ? `${seo.title} - Schemes Dashboard`
-    : 'Schemes Dashboard | Open Budgets India';
+    ? `${seo.title} - Story Generator`
+    : 'Story Generator | Open Budgets India';
   const description = seo.description
     ? seo.description
     : 'Find downloadable data, visualisations and other useful information related to a number of schemes run by the Union and State GovernmentsFind downloadable data, visualisations and other useful information related to a number of schemes run by the Union and State Governments.';
@@ -26,7 +26,7 @@ const Seo = ({ seo }) => {
         </>
       )}
       {url && <meta property="og:url" content={url} />}
-      <meta name="application-name" content="Schemes Dashboard" />
+      <meta name="application-name" content="Story Generator" />
     </Head>
   );
 };
