@@ -12,6 +12,7 @@ import {
   VerticalBarSeries,
   YAxis,
   makeWidthFlexible,
+  ChartLabel
 } from 'react-vis';
 
 import 'node_modules/react-vis/dist/style.css';
@@ -195,8 +196,26 @@ class GraphComponent extends React.Component {
                   />
                 ))}
 
-                <XAxis title="Fiscal Years" />
-                <YAxis title="Indicator" />
+                <XAxis />
+                <YAxis />
+		<ChartLabel
+		    text="Indicator"
+		    className="alt-x-label"
+		    includeMargin={true}
+		    xPercent={0.5}
+		    yPercent={0.8}
+		    />
+		 <ChartLabel
+		    text="Fiscal Years"
+		    className="alt-y-label"
+		    includeMargin={true}
+		    xPercent={0.02}
+		    yPercent={0.2}
+		    style={{
+		      transform: 'rotate(-90)',
+		      textAnchor: 'end'
+		    }}
+		 />
 
                 {this.state.hoverValue ? (
                   <Hint value={this.state.hoverValue}>
