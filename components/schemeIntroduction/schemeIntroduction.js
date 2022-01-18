@@ -67,6 +67,11 @@ export default function SchemeIntroduction(props) {
           <span className="scheme__meta--dark">{props.data.frequency}</span>
         </p>
         <span className="seperator" />
+        <p className="scheme__frequency">
+          Last Updated:{' '}
+          <span className="scheme__meta--dark">{props.data.updatedon}</span>
+        </p>
+        <span className="seperator" />
         <div className="social">
           <p className="social__title">Share on social media:</p>
           <div className="social__links-container">

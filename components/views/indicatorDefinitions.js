@@ -9,6 +9,16 @@ const IndicatorDefinitionView = (props) => {
         <div className="notes__decoration" />
         <p className="page-introduction-text">{props.schemeData.description}</p>
       </div>
+     {states.map((state) => (
+        <div className="mt-3 pb-2 notes__section" key={state}>
+          <h2 className="page-introduction-text">
+            <span className="notes__indicator">
+              {state}
+            </span>{' '}
+            ({props.schemeData.states[state]})
+          </h2>
+        </div>
+      ))}
       {indicators.map((indicator) => (
         <div className="mt-3 pb-2 notes__section" key={indicator}>
           <h2 className="page-introduction-text">
@@ -25,16 +35,14 @@ const IndicatorDefinitionView = (props) => {
           </p>
         </div>
       ))}
-     {states.map((state) => (
-        <div className="mt-3 pb-2 notes__section" key={state}>
+        <div className="mt-3 pb-2 notes__section" key={props.schemeData.generalnotes}>
           <h2 className="page-introduction-text">
             <span className="notes__indicator">
-              {state}
+              General Notes:
             </span>{' '}
-            ({props.schemeData.states[state]})
+            ({props.schemeData.generalnotes})
           </h2>
         </div>
-      ))}
     </div>
   );
 };

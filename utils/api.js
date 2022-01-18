@@ -102,6 +102,8 @@ export async function dataTransform(id) {
       slug,
       notes,
       indicators: [],
+      updatedon: metaObj['last-updated'] || '',
+      generalnotes: metaObj['general-notes'] || '',
       states : states_meta,	
     };
 
