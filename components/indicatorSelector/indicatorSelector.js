@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import SearchBar from 'components/searchBar/searchBar';
 import IndicatorRadioButton from 'components/indicatorRadioButton/indicatorRadioButton';
 
 const IndicatorSelector = (props) => {
@@ -21,7 +20,6 @@ const IndicatorSelector = (props) => {
 
   return (
     <div className="indicator">
-      <SearchBar handleChangeSearchTerm={handleChangeSearchTerm} />
       <fieldset className="indicator__wrapper">
         <legend className="screen-reader-text">Select Indicator</legend>
         {searchedData.map((indicator, index) => {
