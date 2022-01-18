@@ -29,7 +29,7 @@ const SchemesDetailsView = (props) => {
         <div className="details__header">
           {!props.showViz ? (
             <>
-              <p className="details__title">Editorial Notes</p>
+              <p className="details__title">Sectoral Definitions</p>
               <button
                 onClick={() => props.handleToggleShowViz(true)}
                 type="button"
@@ -53,7 +53,7 @@ const SchemesDetailsView = (props) => {
                   id="hide-this-button"
                   type="button"
                 >
-                  View Editorial Notes
+                  View Sectoral Definitions
                 </button>
                 <p>Unit : {unit}</p>
               </div>
