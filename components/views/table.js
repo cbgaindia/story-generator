@@ -12,7 +12,7 @@ const Table = (props) => {
             <th>State/UT</th>
             {financialYears.map((year) => (
               <th key={year}>
-                {indicatorName} {year}
+                {/*{indicatorName} */} {year}
               </th>
             ))}
           </tr>
