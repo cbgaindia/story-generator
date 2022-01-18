@@ -791,7 +791,7 @@ button {
   align-items: center;
 }
 .schemes__details .details__info p {
-  font-size: 1rem;
+  font-size: 0.75rem;
   color: rgba(0, 0, 0, 0.7);
 }
 .schemes__details .details__info span {
