@@ -153,5 +153,10 @@ export const Attr_Social = {
       src: '/assets/icons/facebook-icon.svg',
       value: 'https://www.facebook.com/OpenBudgetsIndia',
     },
+    {
+      alt: 'Open Budgets India linkedin page',
+      src: '/assets/icons/linkedin-icon.svg',
+      value: 'https://www.linkedin.com/company/open-budgets-india',
+    },
   ],
 };

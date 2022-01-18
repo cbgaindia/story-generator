@@ -791,7 +791,7 @@ button {
   align-items: center;
 }
 .schemes__details .details__info p {
-  font-size: 1rem;
+  font-size: 0.75rem;
   color: rgba(0, 0, 0, 0.7);
 }
 .schemes__details .details__info span {
@@ -1209,6 +1209,7 @@ button {
   position: sticky;
   top: 0;
   background: #f0f3f5;
+  font-weight: bolder;
 }
 .scheme-table tbody {
   height: 500px;
@@ -1221,6 +1222,9 @@ button {
 .scheme-table tbody tr td {
   padding: 8px;
   text-align: center;
+}
+.scheme-table tbody tr td:first-child {
+  text-align: left;
 }
 
 .scheme-compare {

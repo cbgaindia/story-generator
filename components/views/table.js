@@ -30,7 +30,7 @@ const Table = (props) => {
                       : ''
                   }`}
                 >
-                  {props.schemeData.fiscal_year[year][state]}
+                  {props.schemeData.fiscal_year[year][state] ? props.schemeData.fiscal_year[year][state] : 'NA'}
                 </td>
               ))}
             </tr>

@@ -483,7 +483,7 @@ class YearSelector extends Component {
 class StateToolTip extends React.Component {
 	render() {
 		if (this.props.statetooltip == null) {
-			return <div className="statetoolPanelHeading">Select a state</div>
+			return <div className="statetoolPanelHeading">Hover over a state</div>
 		}
 		return (
 			<div>
