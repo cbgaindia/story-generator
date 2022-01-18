@@ -9,16 +9,18 @@ const IndicatorDefinitionView = (props) => {
         <div className="notes__decoration" />
         <p className="page-introduction-text">{props.schemeData.description}</p>
       </div>
-     {states.map((state) => (
-        <div className="mt-3 pb-2 notes__section" key={state}>
-          <h2 className="page-introduction-text">
-            <span className="notes__indicator">
-              {state}
-            </span>{' '}
-            ({props.schemeData.states[state]})
-          </h2>
-        </div>
-      ))}
+     <div class="panel-heading">Concordance Table</div>
+     <table class="concordance-table">
+       	    <thead><tr class="concordance-head"><th class="state-text">States</th><th class="state-text">Details of the Budget Document from which data have been recorded</th></tr></thead>
+            <tbody>
+	     {states.map((state) => (
+		<tr className="mt-3 pb-2 state__row" key={state}>
+		  <td className="page-introduction-text state-text">{state}</td>
+                  <td className="page-introduction-text state-text">{props.schemeData.states[state]}</td>
+                </tr>
+	      ))}
+            </tbody>
+      </table>
       {indicators.map((indicator) => (
         <div className="mt-3 pb-2 notes__section" key={indicator}>
           <h2 className="page-introduction-text">
