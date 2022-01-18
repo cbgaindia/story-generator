@@ -9,7 +9,7 @@ const Header = () => (
       <section className="branding">
         <Link href="/">
           <a>
-            <h1 className="branding__logo">Story Generator</h1>
+            <h1 className="branding__logo">Sector Dashboard</h1>
           </a>
         </Link>
 
