@@ -60,7 +60,7 @@ export default function SchemeIntroduction(props) {
           </svg>
         </a>
       </div>
-      <p className="scheme__desc">{props.data.description ? props.data.description : props.data.notes}</p>
+      {/* <p className="scheme__desc">{props.data.description ? props.data.description : props.data.notes}</p> */}
       <div className="scheme__meta">
         <p className="scheme__frequency">
           Frequency:{' '}
