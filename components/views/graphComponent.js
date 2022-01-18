@@ -201,14 +201,14 @@ class GraphComponent extends React.Component {
 		<ChartLabel
 		    text="Indicator"
 		    className="alt-x-label"
-		    includeMargin={true}
+		    includeMargin
 		    xPercent={0.5}
 		    yPercent={0.8}
 		    />
 		 <ChartLabel
 		    text="Fiscal Years"
 		    className="alt-y-label"
-		    includeMargin={true}
+		    includeMargin
 		    xPercent={0.02}
 		    yPercent={0.2}
 		    style={{

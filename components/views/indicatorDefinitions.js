@@ -9,9 +9,9 @@ const IndicatorDefinitionView = (props) => {
         <div className="notes__decoration" />
         <p className="page-introduction-text">{props.schemeData.description}</p>
       </div>
-     <div class="panel-heading">Concordance Table</div>
-     <table class="concordance-table">
-       	    <thead><tr class="concordance-head"><th class="state-text">States</th><th class="state-text">Details of the Budget Document from which data have been recorded</th></tr></thead>
+     <div className="panel-heading">Concordance Table</div>
+     <table className="concordance-table">
+       	    <thead><tr className="concordance-head"><th className="state-text">States</th><th className="state-text">Details of the Budget Document from which data have been recorded</th></tr></thead>
             <tbody>
 	     {states.map((state) => (
 		<tr className="mt-3 pb-2 state__row" key={state}>
