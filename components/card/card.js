@@ -3,20 +3,9 @@ import Image from 'next/image';
 
 const bgColorIndex = [1, 2, 3, 4, 5, 6];
 
+
 export default function Card({ scheme }) {
   bgColorIndex.push(bgColorIndex[scheme.index]);
-
-   {/* <li className="card">
-      <Link href={`${scheme.link}`}>
-        <a href={`${scheme.link}`} className="card__link">
-          <h2 className="card__text">{scheme.title}</h2>
-
-          <div className="card__image">
-            <Image src={scheme.icon} alt="" placeholder="blur" quality={95} />
-          </div>
-        </a>
-      </Link>
-    </li> */}
 
   return (
 

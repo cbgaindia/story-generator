@@ -38,7 +38,7 @@ const Header = () => (
           </a>
         </Link>
       )} */}
-      {<section className="header__desc"><p className="header__desc">{SchemesData.dash_desc}</p></section>} 
+      <section className="header__desc"><p className="header__desc">{SchemesData.dash_desc}</p></section>
     </div>
   </header>
 );
