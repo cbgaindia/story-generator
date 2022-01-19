@@ -7,10 +7,13 @@ import { fetchQuery } from 'utils/api';
 export default function Home({ cardsData }) {
   const [schemes, setSchemes] = useState([]);
   useEffect(() => {
-    const allSchemes = cardsData.map((scheme) => ({
+    const allSchemes = cardsData.map((scheme, index) => ({
       title: scheme.name,
       link: `/scheme/${scheme.slug}`,
       icon: SchemesData[scheme.slug].logo,
+      desc: SchemesData[scheme.slug].desc,
+      totalArticles: SchemesData[scheme.slug].data_count, 
+      index, 
     }));
     allSchemes.sort((a, b) =>
       a.title.toLowerCase().localeCompare(b.title.toLowerCase())

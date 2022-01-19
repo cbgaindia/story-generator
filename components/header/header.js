@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import OBI from 'public/assets/icons/obi_header.png';
+import SchemesData from 'utils/schemesData';
 
 const Header = () => (
   <header className="header">
@@ -37,7 +38,7 @@ const Header = () => (
           </a>
         </Link>
       )} */}
-      {/* {desc && <section className="header__desc">{desc}</section>} */}
+      {<section className="header__desc"><p className="header__desc">{SchemesData.dash_desc}</p></section>} 
     </div>
   </header>
 );
