@@ -233,7 +233,7 @@ button {
   font-size: 1rem;
   line-height: 150%;
   color: rgba(255, 255, 255, 0.9);
-  max-width: 700px;
+  max-width: 100%;
   width: 90vw;
 }
 .header h2 {
@@ -1268,9 +1268,9 @@ button {
   height: 100%;
   overflow: scroll;
 }
-.table-wrapper::-webkit-scrollbar {
+/*.table-wrapper::-webkit-scrollbar {
   display: block;
-}
+} */
 
 .scheme-table {
   width: 100%;

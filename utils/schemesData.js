@@ -17,11 +17,11 @@ import urban    from 'public/Images/schemesLogos/Urban Development and Housing.p
 
 
 const SchemesData = {
-  dash_desc: 'Budget Basics is designed to help understand government budgets in an easy and accessible way. It has twelve sections covering all aspects of the budget.',
+  dash_desc: 'The Sector Dashboard is a tool that facilitates comparison of aggregate budget indicators across different states and years. The indicators of expenditure data have been classified into eleven social and economic sectors. It enables users to make inter-state comparison of budget data by generating simple and interactive visualisations, which can be downloaded for reuse. Detailed descriptions are included to help users understand the specificities of calculation for the indicators presented. The dashboard also provides data on a few macro and receipts indicators across states.',
   health: {
     logo: health,
     data_count: 1,
-    desc: 'Budget Basics is designed to help understand government budgets in an easy and accessible way. It has twelve sections covering all aspects of the budget.',
+    desc: 'Health',
   },
   comingsoon : [
           {
