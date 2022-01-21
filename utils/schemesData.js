@@ -90,7 +90,7 @@ const SchemesData = {
 	  {
 	    title: "Urban Development and Housing",
 	    slug: "#",
-	    logo: health,
+	    logo: urban,
 	    data_count: 0,
 	    desc: 'urban',
 	  },
