@@ -233,7 +233,7 @@ button {
   font-size: 1rem;
   line-height: 150%;
   color: rgba(255, 255, 255, 0.9);
-  max-width: 100%;
+  max-width: 90%;
   width: 90vw;
 }
 .header h2 {
