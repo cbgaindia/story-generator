@@ -30,9 +30,9 @@ export default function Home({ cardsData }) {
       totalArticles: scheme.data_count, 
       index, 
     }));
-    //allComingsoon.sort((a, b) =>
-    //  a.title.toLowerCase().localeCompare(b.title.toLowerCase())
-    //);
+    allComingsoon.sort((a, b) =>
+      a.title.toLowerCase().localeCompare(b.title.toLowerCase())
+    );
     setComingsoon(allComingsoon);
   }, []);
 
