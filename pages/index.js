@@ -6,6 +6,8 @@ import { fetchQuery } from 'utils/api';
 
 export default function Home({ cardsData }) {
   const [schemes, setSchemes] = useState([]);
+  const [comingsoon, setComingsoon] = useState([]);
+  console.log (cardsData)
   useEffect(() => {
     const allSchemes = cardsData.map((scheme, index) => ({
       title: scheme.name,
@@ -19,7 +21,23 @@ export default function Home({ cardsData }) {
       a.title.toLowerCase().localeCompare(b.title.toLowerCase())
     );
     setSchemes(allSchemes);
+
+    const allComingsoon = SchemesData.comingsoon.map((scheme, index) => ({
+      title: scheme.title,
+      link: `/${scheme.slug}`,
+      icon: scheme.logo,
+      desc: scheme.desc,
+      totalArticles: scheme.data_count, 
+      index, 
+    }));
+    //allComingsoon.sort((a, b) =>
+    //  a.title.toLowerCase().localeCompare(b.title.toLowerCase())
+    //);
+    setComingsoon(allComingsoon);
   }, []);
+
+   console.log (schemes)
+   console.log(comingsoon)
 
   const seo = {
     url: 'https://schemes.openbudgetsindia.org/',
@@ -37,6 +55,13 @@ export default function Home({ cardsData }) {
         <ul className="home__cards">
           {schemes.length > 0 &&
             schemes.map((scheme, index) => (
+              <React.Fragment key={index}>
+                <Card scheme={scheme} />
+              </React.Fragment>
+            ))}
+
+          {comingsoon.length > 0 &&
+            comingsoon.map((scheme, index) => (
               <React.Fragment key={index}>
                 <Card scheme={scheme} />
               </React.Fragment>

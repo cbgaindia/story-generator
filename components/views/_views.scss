@@ -257,7 +257,7 @@
 	overflow: scroll;
 
 	&::-webkit-scrollbar {
-		display: none;
+		display: block;
 	}
 }
 

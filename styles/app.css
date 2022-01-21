@@ -844,6 +844,9 @@ button {
   font-size: 1rem;
   color: #4b4797;
 }
+.schemes__details .details__header--viz-show {
+  max-width: 70%
+}
 .schemes__details .details__header--viz-show p {
   font-size: 0.8rem;
   color: rgba(0, 0, 0, 0.7);
@@ -1131,6 +1134,11 @@ button {
   display: block;
   z-index: 1000;
 }
+
+.legendcontainer .legendunit{
+  text-align : center;
+}
+
 @media (max-width: 595px) {
   .legendcontainer {
     display: none;
@@ -1261,7 +1269,7 @@ button {
   overflow: scroll;
 }
 .table-wrapper::-webkit-scrollbar {
-  display: none;
+  display: block;
 }
 
 .scheme-table {

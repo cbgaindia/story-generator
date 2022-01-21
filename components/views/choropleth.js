@@ -408,6 +408,7 @@ export default class Choropleth extends Component {
 						)}
 					</div>
 					<div className="legendcontainer">
+                                                <p class="legendunit">Unit : {this.props.unit}</p>
 						<div className="legend-scale">
 							{this.state.bandFigures ? (
 								<ul className="legend-labels">
