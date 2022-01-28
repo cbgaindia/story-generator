@@ -273,19 +273,19 @@ export default class Choropleth extends Component {
 			return '#676767'
 		}
 		if (band === 1) {
-			return '#D3D1FF'
+			return '#56A182'
 		}
 		if (band === 2) {
-			return '#CEA8FF'
+			return '#43876A'
 		}
 		if (band === 3) {
-			return '#AB71F5'
+			return '#2F6C53'
 		}
 		if (band === 4) {
-			return '#7C46C2'
+			return '#1C523B'
 		}
 		if (band === 5) {
-			return '#441E75'
+			return '#093724'
 		}
 	}
 
@@ -413,27 +413,27 @@ export default class Choropleth extends Component {
 							{this.state.bandFigures ? (
 								<ul className="legend-labels">
 									<LegendStep
-										bgColor="#D3D1FF"
+										bgColor="#56A182"
 										band="20%"
 										range={this.state.bandFigures['20%']}
 									/>
 									<LegendStep
-										bgColor="#CEA8FF"
+										bgColor="#43876A"
 										band="40%"
 										range={this.state.bandFigures['40%']}
 									/>
 									<LegendStep
-										bgColor="#AB71F5"
+										bgColor="#2F6C53"
 										band="60%"
 										range={this.state.bandFigures['60%']}
 									/>
 									<LegendStep
-										bgColor="#7C46C2"
+										bgColor="#1C523B"
 										band="80%"
 										range={this.state.bandFigures['80%']}
 									/>
 									<LegendStep
-										bgColor="#441E75"
+										bgColor="#093724"
 										band="100%"
 										range={this.state.bandFigures['100%']}
 									/>

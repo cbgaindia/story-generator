@@ -146,7 +146,7 @@ const DatavizViewControls = (props) => (
         type="button"
         style={
           props.estimate == 'Budget Estimates'
-            ? { background: '#672448', color: 'white' }
+            ? { background: '#4b4797', color: 'white' }
             : {}
         }
         onClick={() => props.handleChangeEst('Budget Estimates')}
@@ -159,7 +159,7 @@ const DatavizViewControls = (props) => (
         type="button"
         style={
           props.estimate == 'Revised Estimates'
-            ? { background: '#672448', color: 'white' }
+            ? { background: '#4b4797', color: 'white' }
             : {}
         }
         onClick={() => props.handleChangeEst('Revised Estimates')}
@@ -172,7 +172,7 @@ const DatavizViewControls = (props) => (
         type="button"
         style={
           props.estimate == 'Actuals'
-            ? { background: '#672448', color: 'white' }
+            ? { background: '#4b4797', color: 'white' }
             : {}
         }
         onClick={() => props.handleChangeEst('Actuals')}
