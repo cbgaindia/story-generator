@@ -794,9 +794,9 @@ button {
   scrollbar-width: none;
   border: none;
 }
-.indicator__wrapper::-webkit-scrollbar {
+/* .indicator__wrapper::-webkit-scrollbar {
   display: none;
-}
+} */
 @media (min-width: 1025px) {
   .indicator__wrapper {
     height: 89%;
@@ -929,9 +929,9 @@ button {
   min-height: 430px;
   scrollbar-width: none;
 }
-#vis-container::-webkit-scrollbar {
+/* #vis-container::-webkit-scrollbar {
   display: none;
-}
+} */
 
 .indicator-search-container {
   padding: 8px;
@@ -1213,9 +1213,9 @@ button {
   overflow: auto;
   height: 100%;
 }
-.scheme__notes::-webkit-scrollbar {
+/* .scheme__notes::-webkit-scrollbar {
   display: none;
-}
+} */
 .scheme__notes .notes__notice {
   background: #ffffff;
   padding: 8px;
