@@ -40,7 +40,7 @@ const SchemesDetailsView = (props) => {
           ) : (
             <>
               <div className="details__header--viz-show">
-                <h3>{indicatorName}</h3>
+                <h3>{indicatorName} - {props.estimate}</h3>
                 <p>
                   {props.activeViz === 'map'
                     ? `${activeYear} | ${schemeName}`
