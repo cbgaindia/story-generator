@@ -4,6 +4,16 @@ const Table = (props) => {
   console.log(props.schemeData)
   const financialYears = Object.keys(props.schemeData.fiscal_year).reverse();
   const indicatorName = props.schemeData.name;
+  const stateCodes = [];
+  Object.keys(props.stateCodes).map((state, index) => (
+	financialYears.map((year) => {
+          if (props.schemeData.fiscal_year[year][state]) {
+		 stateCodes.includes(state) ? null : stateCodes.push(state);
+          }
+        })
+  ));
+  console.log(stateCodes);
+
   return (
     <div className="table-wrapper">
       <table className="scheme-table">
@@ -18,15 +28,15 @@ const Table = (props) => {
           </tr>
         </thead>
         <tbody>
-          {Object.keys(props.stateCodes).map((state, index) => (
-            <tr key={index}>
+          {stateCodes.map((state, index) => (
+	    <tr key={index}>
               <td>{props.stateCodes[state]}</td>
               {financialYears.map((year) => (
                 <td
                   key={year}
                   className={`${
                     parseInt(props.schemeData.fiscal_year[year][state], 10) < 0
-                      ? 'text-danger'
+                      ? 'text-danger'	
                       : ''
                   }`}
                 >
