@@ -5,12 +5,13 @@ const Table = (props) => {
   const financialYears = Object.keys(props.schemeData.fiscal_year).reverse();
   const indicatorName = props.schemeData.name;
   const stateCodes = [];
-  Object.keys(props.stateCodes).map((state, index) => (
-	financialYears.map((year) => {
+  Object.keys(props.stateCodes).forEach((state, index) => (
+	financialYears.forEach((year) => {
           if (props.schemeData.fiscal_year[year][state]) {
-		 stateCodes.includes(state) ? null : stateCodes.push(state);
+		if  (!stateCodes.includes(state)) { stateCodes.push(state) }
           }
         })
+        
   ));
   console.log(stateCodes);
 
