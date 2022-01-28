@@ -12,7 +12,8 @@ import {
   VerticalBarSeries,
   YAxis,
   makeWidthFlexible,
-  ChartLabel
+  ChartLabel,
+  LabelSeries
 } from 'react-vis';
 
 import 'node_modules/react-vis/dist/style.css';
@@ -194,19 +195,19 @@ class GraphComponent extends React.Component {
                     data={state.figures}
                     key={state.name}
                   />
+                  
                 ))}
-
                 <XAxis />
                 <YAxis />
 		<ChartLabel
-		    text="Indicator"
+		    text="Fiscal Years"
 		    className="alt-x-label"
 		    includeMargin
 		    xPercent={0.5}
 		    yPercent={0.8}
 		    />
 		 <ChartLabel
-		    text="Fiscal Years"
+		    text="Indicator"
 		    className="alt-y-label"
 		    includeMargin
 		    xPercent={0.02}
