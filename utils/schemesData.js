@@ -26,6 +26,11 @@ const SchemesData = {
     data_count: 1,
     desc: 'receipts',
   },
+  aggregate_budget: {
+    logo: agg_bud,
+    data_count: 1,
+    desc: 'receipts',
+  },
   comingsoon : [
           {
 	    title: "Agriculture and Allied Activities",
@@ -33,13 +38,6 @@ const SchemesData = {
 	    logo: agri,
 	    data_count: 0,
 	    desc: 'Agriculture and Allied Activities',
-	  },
-	  {
-	    title: "Aggregate Budget Indicators",
-	    slug: "#",
-	    logo: agg_bud,
-	    data_count: 0,
-	    desc: 'Aggregate Budget Indicators',
 	  },
 	  {
 	    title: "Education",

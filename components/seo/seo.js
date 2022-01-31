@@ -8,7 +8,7 @@ const Seo = ({ seo }) => {
     ? seo.description
     : 'A tool that facilitates comparison of aggregate budget indicators across different states and years across twelve social and economic sectors.';
 
-  const url = seo.url ? seo.url : 'https://schemes.openbudgetsindia.org/';
+  const url = seo.url ? seo.url : 'https://sectors.openbudgetsindia.org/';
   return (
     <Head>
       {title && (
