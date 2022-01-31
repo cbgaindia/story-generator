@@ -48,8 +48,8 @@ export const Dashboards = {
       value: 'https://schemes.openbudgetsindia.org',
     },
     {
-      title: 'Story Generator',
-      value: 'https://cbgaindia.github.io/story-generator',
+      title: 'Sector Dashboard',
+      value: 'https://sectors.openbudgetsindia.org/',
     },
   ],
 };
