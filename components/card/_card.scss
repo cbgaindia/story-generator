@@ -17,11 +17,7 @@
 	display: flex;
 	align-items: flex-end;
 
-	background: linear-gradient(
-		218.46deg,
-		hsl(232, 100%, 28%) 9.79%,
-		hsl(262, 38%, 42%) 74.73%
-	);
+	@include card-background(#9779d3 9.79%, #febbba 74.73%);
 
 	&__content {
 		height: 100%;

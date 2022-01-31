@@ -42,17 +42,14 @@
 	}
 
 	&__desc {
-		display: grid;
-		grid-area: 2 / 1 / 2 / 3;
 		margin-top: 1rem;
 		padding: 1rem 0;
 
-		align-items: center;
 		font-weight: normal;
 		font-size: 1rem;
 		line-height: 150%;
 		color: rgba(255, 255, 255, 0.9);
-		max-width: 90%;
+		max-width: 1440px;
 		width: 90vw;
 	}
 
