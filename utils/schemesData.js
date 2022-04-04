@@ -36,14 +36,12 @@ const SchemesData = {
     data_count: 1,
     desc: 'Education',
   },
+  agriculture: {
+    logo: agri,
+    data_count: 1,
+    desc: 'Agriculture and Allied Activities',
+  },
   comingsoon : [
-          {
-	    title: "Agriculture and Allied Activities",
-	    slug: "#",
-	    logo: agri,
-	    data_count: 0,
-	    desc: 'Agriculture and Allied Activities',
-	  },
 	  {
 	    title: "Food, Civil Supplies and Cooperation",
 	    slug: "#",
