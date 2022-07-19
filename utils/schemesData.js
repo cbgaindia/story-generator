@@ -46,34 +46,28 @@ const SchemesData = {
     data_count: 1,
     desc: 'Food, Civil Supplies and Cooperation',
   },
+  environment: {
+    logo: forest,
+    data_count: 1,
+    desc: 'Forest and Environment',
+  },
+  rural_development: {
+    logo: rural,
+    data_count: 1,
+    desc: 'Rural Development',
+  },
+  power: {
+    logo: power,
+    data_count: 1,
+    desc: 'Power and Energy',
+  },  
   comingsoon : [
-	  {
-	    title: "Forests and Environment",
-	    slug: "#",
-	    logo: forest,
-	    data_count: 0,
-	    desc: 'Forests and Environment',
-	  },
 	  {
 	    title: "Irrigation and Water Resources",
 	    slug: "#",
 	    logo: irrig,
 	    data_count: 0,
 	    desc: 'Irrigation and Water Resources',
-	  },
-	  {
-	    title: "Power and Energy",
-	    slug: "#",
-	    logo: power,
-	    data_count: 0,
-	    desc: 'Power and Energy',
-	  },
-	  {
-	    title: "Rural Development",
-	    slug: "#",
-	    logo: rural,
-	    data_count: 0,
-	    desc: 'Rural Development',
 	  },
 	  {
 	    title: "Social Welfare",
