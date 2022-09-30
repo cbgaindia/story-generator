@@ -61,14 +61,12 @@ const SchemesData = {
     data_count: 1,
     desc: 'Power and Energy',
   },  
+  irrigation: {
+    logo: irrig,
+    data_count: 1,
+    desc: 'Irrigation and Water Resources',
+  },
   comingsoon : [
-	  {
-	    title: "Irrigation and Water Resources",
-	    slug: "#",
-	    logo: irrig,
-	    data_count: 0,
-	    desc: 'Irrigation and Water Resources',
-	  },
 	  {
 	    title: "Social Welfare",
 	    slug: "#",
