@@ -74,15 +74,12 @@ const SchemesData = {
     data_count: 1,
     desc: 'urban',
   },
-  comingsoon: [
-    {
-      title: 'Social Welfare',
-      slug: '#',
-      logo: social,
-      data_count: 0,
-      desc: 'Social Welfare',
-    },
-  ],
+  social_welfare: {
+    logo: social,
+    data_count: 1,
+    desc: 'Social Welfare',
+  },
+  comingsoon: [],
 };
 
 export default SchemesData;
